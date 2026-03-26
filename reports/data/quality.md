@@ -12,14 +12,14 @@
 ## 2. 领域发文趋势分析
 通过对 522 篇有效文献的年份统计，该领域呈现出显著的指数级增长态势：
 
-![Annual Publication Trend](../outputs/figures/publication_trend.png)
+![Annual Publication Trend](../../outputs/figures/publication_trend.png)
 
 **观察结论**：领域自 2023 年起进入爆发期，2025 年发文量（344 篇）比 2024 年增长了 4 倍以上，证明大模型智能体已成为当前 AI 研究的最前沿热点。
 
 ## 3. 核心关键词与研究热点分析
 通过对文献标题进行词云分析，我们识别出了领域的核心画像：
 
-![Word Cloud](../outputs/figures/wordcloud_titles.png)
+![Word Cloud](../../outputs/figures/wordcloud_titles.png)
 
 ### 💡 研究热点解读 (M1 Insight)：
 通过对 522 篇去重文献标题的词云分析发现，该领域的研究呈现出明显的 **“系统化”**、**“人性化”** 与 **“能力化”** 趋势：
