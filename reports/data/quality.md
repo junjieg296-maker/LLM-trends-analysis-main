@@ -1,33 +1,34 @@
 # M1 里程碑：数据采集与质量评估报告
 
-## 1. 检索概况
-* **检索平台**：Lens.org (Scholarly Works)
-* **检索日期**：2026-03-26
-* **检索式**：`("Large Language Model*" OR "LLM*" OR "Generative AI" OR "Foundation Model*") AND ("Multi-agent*" OR "Collaboration" OR "Coordination" OR "Cooperation" OR "Swarm intelligence") AND ("Autonomous agent*" OR "Agentic workflow" OR "Task planning")`
-* **原始数据量**：542 篇
+## 1. 文献检索与筛选概况 (PRISMA 流程)
+本项目针对大模型多智能体协作领域，在 Lens.org 平台进行了系统性检索。
+* **原始检索数 (Identification)**：542 篇
+* **去重后数量 (Screening)**：522 篇 (利用 `src/data_quality.py` 自动化去重，去重率 3.69%)
+* **数据质量验证**：
+    * 标题完整率：100%
+    * 摘要覆盖率：98.28%
+    * 参考文献覆盖率：81.99% (满足 M2 阶段共被引分析要求)
 
-## 2. 数据清洗结果 (Python 自动化处理)
-通过运行 `src/data_quality.py` 脚本，清洗结果如下：
-* **去重后总记录数**：522 篇
-* **重复记录比例**：3.69%
-* **核心字段完整度**：
-    * Title (标题): 100%
-    * Author/s (作者): 99.62%
-    * Abstract (摘要): 98.28%
-    * References (参考文献): 81.99% (满足共被引分析要求)
+## 2. 领域发文趋势分析
+通过对 522 篇有效文献的年份统计，该领域呈现出显著的指数级增长态势：
 
-## 3. 初步研究发现 (M1 Insight)
-通过对 522 篇去重文献的初步可视化分析，得出以下结论：
+![Annual Publication Trend](../outputs/figures/publication_trend.png)
 
-### A. 发文趋势：指数级增长
-![发文趋势图](../outputs/figures/publication_trend.png)
-* **解读**：领域自 2023 年起进入爆发期，2025 年发文量（344 篇）呈现陡峭上升趋势，证明该方向是当前的学术前沿热点。
+**观察结论**：领域自 2023 年起进入爆发期，2025 年发文量（344 篇）比 2024 年增长了 4 倍以上，证明大模型智能体已成为当前 AI 研究的最前沿热点。
 
-### B. 核心关键词：研究重心转移
-![词云图](../outputs/figures/wordcloud_titles.png)
-* **系统化**：以 **Multi-Agent Systems** 为核心，探讨复杂任务的协同架构。
-* **人性化**：**Human** 关键词的高度凸显，表明“人机协作”是当前研究的重中之重。
-* **能力化**：**Autonomous**、**Planning** 与 **Workflow** 的高频出现，印证了研究重心正从“文本生成”向“任务执行”快速转移。
+## 3. 核心关键词与研究热点分析
+通过对文献标题进行词云分析，我们识别出了领域的核心画像：
 
----
-**结论**：本项目数据集质量极高，字段完整，趋势明确，具备进入 M2 阶段进行深度引文分析和聚类研究的基础。
+![Word Cloud](../outputs/figures/wordcloud_titles.png)
+
+### 💡 研究热点解读 (M1 Insight)：
+通过对 522 篇去重文献标题的词云分析发现，该领域的研究呈现出明显的 **“系统化”**、**“人性化”** 与 **“能力化”** 趋势：
+
+1. **系统化**：以 **Multi-Agent Systems** 为核心，研究重心正从“单个模型”向“复杂任务的协同架构”演进。
+2. **人性化**：**Human** 关键词的高度凸显，表明“人机协作” (Human-AI Interaction) 与“人在回路”是当前学术界关注的重中之重。
+3. **能力化**：**Autonomous**、**Planning** 与 **Workflow** 的高频出现，印证了智能体正从简单的“文本生成”向具备自主决策能力的“任务执行”快速转型。
+
+## 4. 结论与 M2 计划
+本项目 M1 阶段数据准备充分，字段完整度极高，符合文献计量学分析标准。
+* **下一阶段目标**：进入 M2 阶段，利用清洗后的数据构建作者共现网络及关键词共现图谱，深度挖掘领域内的核心团队与技术演进路径。
+* 
