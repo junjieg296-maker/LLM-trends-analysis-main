@@ -1,0 +1,25 @@
+# 检索式参数化配置 v0.1
+version: "0.1"
+
+query:
+  # 检索对象 (Object)：大模型核心术语
+  object:
+    - "Large Language Model*"
+    - "LLM*"
+    - "Generative AI"
+    - "Foundation Model*"
+    - "ChatGPT"
+  
+  # 检索方法 (Method)：协同与多智能体相关词
+  method:
+    - "Multi-agent*"
+    - "Collaboration"
+    - "Coordination"
+    - "Cooperation"
+    - "Multi-agent system*"
+
+  # 限定条件 (Constraint)：时间与文献类型 [cite: 350-352]
+  constraint:
+    time_window: [2020, 2026]
+    doc_type: ["Article", "Review", "Conference Paper"]
+    language: "English"
