@@ -144,7 +144,7 @@ python src/sensitivity_analysis.py
 ## 📅 项目核心里程碑 (Milestones)
 
 ### [x] M1 阶段：数据与检索方案验证（第 4 周）
-* ✅ 确立了 v0.1 版 YAML 检索配置，完成数据采集（初始 542 篇）
+* ✅ 确立了 v0.1 版 YAML 检索配置，完成数据采集（初始 5,042 篇）
 * ✅ 输出 `m1_data_quality_report.md` 报告，确立 PRISMA 筛选流程
 * ✅ 生成发文趋势图与词云，初步形成领域前沿洞察
 * ✅ 数据字段完整度：Title 100%, Year 100%, Abstract 98.28%, References 81.99%

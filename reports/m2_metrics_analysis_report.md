@@ -67,36 +67,30 @@
 | 排名 | 期刊/会议名称 | 发文量 |
 |:---:|:---|:---:|
 | 1 | Nature | 359篇 |
-| 2 | AAAI Conference on Artificial Intelligence | 353篇 |
-| 3 | ACM Transactions on Intelligent Systems and Technology | 353篇 |
+| 2 | AAAI | 353篇 |
+| 3 | ACM Trans. Intell. Syst. Technol. | 353篇 |
 | 4 | Applied Soft Computing | 343篇 |
-| 5 | Proceedings of the IEEE | 341篇 |
+| 5 | Proc. IEEE | 341篇 |
 | 6 | Machine Learning | 332篇 |
-| 7 | Neural Information Processing Systems | 329篇 |
+| 7 | NeurIPS | 329篇 |
 | 8 | Expert Systems with Applications | 329篇 |
-| 9 | International Conference on Machine Learning | 328篇 |
-| 10 | Frontiers in Artificial Intelligence | 327篇 |
+| 9 | ICML | 328篇 |
+| 10 | Frontiers AI | 327篇 |
 
 **期刊分布特征**：
 * **会议论文占比**：26.7%，NeurIPS、ICML、AAAI 为该领域核心学术会议
 * **顶级期刊参与度高**：Nature 等顶级期刊发文量位居前列
 * **跨学科特征明显**：涵盖计算机科学、人工智能、工程等多学科
 
-### 2.4 文献类型与开放获取
+### 2.4 文献类型、开放获取与作者统计
 
-| 文献类型 | 数量 | 占比 |
-|:---|:---:|:---:|
-| 期刊论文 (journal article) | 3,664篇 | 73.3% |
-| 会议论文 (conference proceedings article) | 1,336篇 | 26.7% |
-
-**开放获取情况**：48.96% 的文献为开放获取，表明该领域知识传播具有一定开放性。
-
-### 2.5 作者统计与高产作者
-
-| 指标 | 数值 |
-|:---|:---:|
-| 作者总数 | 20人 |
-| 篇均作者数 | 4.49人 |
+| 类别 | 指标 | 数值 |
+|:---|:---|:---:|
+| **文献类型** | 期刊论文 | 3,664篇 (73.3%) |
+| | 会议论文 | 1,336篇 (26.7%) |
+| **开放获取** | 开放获取比例 | 48.96% |
+| **作者统计** | 作者总数 | 20人 |
+| | 篇均作者数 | 4.49人 |
 
 **高产作者 TOP10**：
 
@@ -140,12 +134,7 @@
 
 ![Keyword Co-occurrence Network](../outputs/figures/keyword_cooccurrence_network.png)
 
-**网络参数**：
-* 节点数：35个左右关键词
-* 边数：40条左右共现关系
-* 过滤阈值：共现频次 ≥ 4次
-* 配色方案：暖橙色系（`#F59E0B`），白色边缘，清晰可见
-* 设计规范：300 DPI，纯白背景，节点按频次缩放，仅标注 TOP10 关键词
+图中节点代表关键词，节点大小表示关键词出现频次，节点间的连线表示关键词共现关系，连线越粗表示共现次数越多。颜色按年份渐变，红色代表近年研究热点。通过该网络可以识别出领域的核心研究主题及其演化趋势。
 
 ### 3.2 作者合作网络
 
@@ -153,12 +142,7 @@
 
 ![Author Collaboration Network](../outputs/figures/author_collaboration_network.png)
 
-**网络参数**：
-* 节点数：40个左右核心作者
-* 边数：40条左右合作关系
-* 过滤阈值：显示最强的合作关系
-* 配色方案：蓝色系（`#3B82F6`），白色边缘，灰色连线
-* 设计规范：300 DPI，纯白背景，Fruchterman-Reingold 布局，清晰易读
+图中节点代表作者，节点大小反映作者的合作广度，节点间连线表示作者间的合作关系。通过该网络可以识别出领域的核心研究团队和关键研究者，揭示学术合作模式和知识传播路径。
 
 ### 3.3 机构/国家分布
 
@@ -166,15 +150,15 @@
 
 ![Research Output by Country](../outputs/figures/institution_country_network.png)
 
-展示全球研究力量分布，显示各国发文数量对比。
-
-**设计规范**：Viridis 专业渐变色（顶会标准配色），条形图，数值标注，sns.despine 边框，300 DPI
+图中展示了各国家的发文数量对比。可以看出，美国、中国等国家在该领域的研究产出较为突出，反映了全球研究力量的分布格局。
 
 ### 3.4 共被引网络
 
 构建文献共被引网络，识别领域经典文献和知识基础：
 
 ![Co-citation Network](../outputs/figures/citation_network.png)
+
+图中节点代表被引用的文献，节点大小表示被引频次，节点间连线表示共被引关系。通过共被引分析可以识别领域的知识基础和经典文献，揭示研究领域的知识结构和发展脉络。
 
 ---
 
