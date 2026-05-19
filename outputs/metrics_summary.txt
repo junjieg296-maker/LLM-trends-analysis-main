@@ -5,6 +5,7 @@
 【一、时间维度指标】
 ----------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   2020: 1 papers
   2021: 2 papers
   2022: 6 papers
@@ -38,12 +39,28 @@
   Zero Citation Papers: 236
   h-index: 31
 =======
+=======
+  2020年: 1篇
+  2021年: 2篇
+  2022年: 6篇
+  2023年: 19篇
+  2024年: 81篇
+  2025年: 344篇
+  2026年: 69篇
+
+  平均年增长率: 181.29%
+  增长率标准差: 140.27%
+
+【二、影响力指标】
+----------------------------------------
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
   总被引次数: 4,265
   篇均被引: 8.17
   被引中位数: 1.00
   高被引论文数(被引>50): 20
   零被引论文数: 236
   h指数: 31
+<<<<<<< HEAD
 >>>>>>> parent of 1cfd3a1 (扩展数据量)
 
 【三、来源期刊TOP10】
@@ -60,6 +77,11 @@
   Briefings in bioinformatics: 5 papers
   Frontiers in psychology: 5 papers
 =======
+=======
+
+【三、来源期刊TOP10】
+----------------------------------------
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
   International Joint Conference on Autonomous Agents and Multiagent Systems: 23篇
   Frontiers in robotics and AI: 22篇
   Frontiers in artificial intelligence: 20篇
@@ -70,6 +92,7 @@
   NPJ digital medicine: 6篇
   Briefings in bioinformatics: 5篇
   Frontiers in psychology: 5篇
+<<<<<<< HEAD
 >>>>>>> parent of 1cfd3a1 (扩展数据量)
 
 【四、文献类型分布】
@@ -143,6 +166,37 @@
   Political science: 46 occurrences
   Workflow: 44 occurrences
 =======
+=======
+
+【四、文献类型分布】
+----------------------------------------
+  journal article: 383篇 (73.4%)
+  conference proceedings article: 139篇 (26.6%)
+
+【五、开放获取情况】
+----------------------------------------
+  开放获取比例: 73.18%
+
+【六、作者统计】
+----------------------------------------
+  作者总数: 2,565
+  篇均作者数: 5.10
+
+  高产作者TOP10:
+    Johannes F. Loevenich: 3篇
+    Roberto Rigolin F. Lopes: 3篇
+    null null: 3篇
+    Pai Zheng: 3篇
+    Markus J Buehler: 3篇
+    Pietro Morasso: 3篇
+    Yuheng Cheng: 2篇
+    Junhua Zhao: 2篇
+    Zhu Han: 2篇
+    Tadahiro Taniguchi: 2篇
+
+【七、研究领域分布TOP15】
+----------------------------------------
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
   Computer science: 356次
   Artificial intelligence: 227次
   Human–computer interaction: 117次
@@ -158,4 +212,7 @@
   Medicine: 47次
   Political science: 46次
   Workflow: 44次
+<<<<<<< HEAD
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
+=======
 >>>>>>> parent of 1cfd3a1 (扩展数据量)

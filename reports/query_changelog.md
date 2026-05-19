@@ -1,6 +1,7 @@
 # 检索式变更日志 (Query Changelog)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## v0.2 (2026-05-19)
 * **修改人**：[高俊杰]
 * **变更内容**：完成数据采集与清洗，获得 522 篇有效文献。
@@ -11,6 +12,8 @@
     * 新增关键词：AI Agent、Foundation Model、Code Generation、Planning、Reasoning、Tool Use 等
 * **修改原因**：为满足 M2 阶段深度计量分析需求，扩大样本量以提升统计显著性，支撑知识图谱构建与敏感性分析。
 
+=======
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
 =======
 >>>>>>> parent of 1cfd3a1 (扩展数据量)
 ## v0.1 (2026-03-26)

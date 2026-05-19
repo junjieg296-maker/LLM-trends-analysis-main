@@ -5,6 +5,7 @@
 【TOP20 高频关键词】
 ----------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
  1. artificial intelligence     56 occurrences
  2. large language models       45 occurrences
  3. large language model        24 occurrences
@@ -26,6 +27,8 @@
 19. generative artificial intelligence    6 occurrences
 20. large language models (llms)    6 occurrences
 =======
+=======
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
  1. artificial intelligence     56次
  2. large language models       45次
  3. large language model        24次
@@ -46,6 +49,7 @@
 18. digital health               6次
 19. generative artificial intelligence    6次
 20. large language models (llms)    6次
+<<<<<<< HEAD
 >>>>>>> parent of 1cfd3a1 (扩展数据量)
 
 【关键词共现关系(共现>=2次)】
@@ -82,6 +86,11 @@ news                 <-> czech republic       co-occurred 6 times
 news                 <-> chatgpt              co-occurred 6 times
 news                 <-> artificial intelligence co-occurred 6 times
 =======
+=======
+
+【关键词共现关系(共现>=2次)】
+----------------------------------------
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
 ethics               ↔ artificial intelligence 共现11次
 marketing communication ↔ ethics               共现9次
 artificial intelligence ↔ large language model 共现8次
@@ -112,4 +121,7 @@ generation z         ↔ artificial intelligence 共现6次
 news                 ↔ czech republic       共现6次
 news                 ↔ chatgpt              共现6次
 news                 ↔ artificial intelligence 共现6次
+<<<<<<< HEAD
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
+=======
 >>>>>>> parent of 1cfd3a1 (扩展数据量)
