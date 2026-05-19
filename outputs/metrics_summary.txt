@@ -1,9 +1,10 @@
 ============================================================
-            LLM Multi-Agent Bibliometric Analysis Report
+            LLM多智能体领域文献计量指标分析报告
 ============================================================
 
-【1. Temporal Metrics】
+【一、时间维度指标】
 ----------------------------------------
+<<<<<<< HEAD
   2020: 1 papers
   2021: 2 papers
   2022: 6 papers
@@ -14,18 +15,40 @@
 
   Average Annual Growth Rate: 181.29%
   Growth Rate Std: 140.27%
+=======
+  2020年: 1篇
+  2021年: 2篇
+  2022年: 6篇
+  2023年: 19篇
+  2024年: 81篇
+  2025年: 344篇
+  2026年: 69篇
 
-【2. Impact Metrics】
+  平均年增长率: 181.29%
+  增长率标准差: 140.27%
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
+
+【二、影响力指标】
 ----------------------------------------
+<<<<<<< HEAD
   Total Citations: 4,265
   Average Citations per Paper: 8.17
   Median Citations: 1.00
   Highly Cited Papers (>50 citations): 20
   Zero Citation Papers: 236
   h-index: 31
+=======
+  总被引次数: 4,265
+  篇均被引: 8.17
+  被引中位数: 1.00
+  高被引论文数(被引>50): 20
+  零被引论文数: 236
+  h指数: 31
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
 
-【3. Top 10 Journals】
+【三、来源期刊TOP10】
 ----------------------------------------
+<<<<<<< HEAD
   International Joint Conference on Autonomous Agents and Multiagent Systems: 23 papers
   Frontiers in robotics and AI: 22 papers
   Frontiers in artificial intelligence: 20 papers
@@ -36,18 +59,40 @@
   NPJ digital medicine: 6 papers
   Briefings in bioinformatics: 5 papers
   Frontiers in psychology: 5 papers
+=======
+  International Joint Conference on Autonomous Agents and Multiagent Systems: 23篇
+  Frontiers in robotics and AI: 22篇
+  Frontiers in artificial intelligence: 20篇
+  Scientific reports: 16篇
+  Sensors (Basel, Switzerland): 14篇
+  Zenodo (CERN European Organization for Nuclear Research): 12篇
+  Entropy (Basel, Switzerland): 6篇
+  NPJ digital medicine: 6篇
+  Briefings in bioinformatics: 5篇
+  Frontiers in psychology: 5篇
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
 
-【4. Document Type Distribution】
+【四、文献类型分布】
 ----------------------------------------
+<<<<<<< HEAD
   journal article: 383 papers (73.4%)
   conference proceedings article: 139 papers (26.6%)
+=======
+  journal article: 383篇 (73.4%)
+  conference proceedings article: 139篇 (26.6%)
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
 
-【5. Open Access Status】
+【五、开放获取情况】
 ----------------------------------------
+<<<<<<< HEAD
   Open Access Ratio: 0.00%
+=======
+  开放获取比例: 73.18%
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
 
-【6. Author Statistics】
+【六、作者统计】
 ----------------------------------------
+<<<<<<< HEAD
   Total Authors: 2,565
   Average Authors per Paper: 5.10
 
@@ -62,9 +107,26 @@
     Junhua Zhao: 2 papers
     Zhu Han: 2 papers
     Tadahiro Taniguchi: 2 papers
+=======
+  作者总数: 2,565
+  篇均作者数: 5.10
 
-【7. Top 15 Research Fields】
+  高产作者TOP10:
+    Johannes F. Loevenich: 3篇
+    Roberto Rigolin F. Lopes: 3篇
+    null null: 3篇
+    Pai Zheng: 3篇
+    Markus J Buehler: 3篇
+    Pietro Morasso: 3篇
+    Yuheng Cheng: 2篇
+    Junhua Zhao: 2篇
+    Zhu Han: 2篇
+    Tadahiro Taniguchi: 2篇
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
+
+【七、研究领域分布TOP15】
 ----------------------------------------
+<<<<<<< HEAD
   Computer science: 356 occurrences
   Artificial intelligence: 227 occurrences
   Human–computer interaction: 117 occurrences
@@ -80,3 +142,20 @@
   Medicine: 47 occurrences
   Political science: 46 occurrences
   Workflow: 44 occurrences
+=======
+  Computer science: 356次
+  Artificial intelligence: 227次
+  Human–computer interaction: 117次
+  Engineering: 105次
+  Data science: 98次
+  Psychology: 85次
+  Knowledge management: 75次
+  Software engineering: 61次
+  Task (project management): 54次
+  Systems engineering: 54次
+  Robot: 52次
+  Programming language: 48次
+  Medicine: 47次
+  Political science: 46次
+  Workflow: 44次
+>>>>>>> parent of 1cfd3a1 (扩展数据量)

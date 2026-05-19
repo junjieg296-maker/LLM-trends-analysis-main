@@ -1,9 +1,8 @@
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
-import matplotlib.cm as cm
-import matplotlib.colors as mcolors
 import os
+<<<<<<< HEAD
 import numpy as np
 from collections import defaultdict
 
@@ -126,6 +125,8 @@ def build_keyword_cooccurrence():
     plt.savefig(output_file, bbox_inches='tight', dpi=300, facecolor='white')
     plt.close()
     print("Keyword co-occurrence network saved")
+=======
+>>>>>>> parent of 1cfd3a1 (扩展数据量)
 
 
 def build_author_network():
@@ -151,84 +152,42 @@ def build_author_network():
                     else:
                         G.add_edge(author1, author2, weight=1)
 
+    print(f"作者合作网络构建完成: {G.number_of_nodes()}个节点, {G.number_of_edges()}条边")
+
     filtered_G = G.copy()
-    edges = list(filtered_G.edges(data='weight'))
-    edges.sort(key=lambda x: x[2], reverse=True)
-    if len(edges) > 45:
-        edges = edges[:45]
-        filtered_G = nx.Graph()
-        for u, v, w in edges:
-            filtered_G.add_edge(u, v, weight=w)
+    edges_to_remove = [(u, v) for u, v, w in filtered_G.edges(data='weight') if w < 2]
+    filtered_G.remove_edges_from(edges_to_remove)
+    filtered_G.remove_nodes_from(list(nx.isolates(filtered_G)))
+    
+    print(f"过滤后(合作>=2次): {filtered_G.number_of_nodes()}个节点, {filtered_G.number_of_edges()}条边")
 
-    deg = dict(filtered_G.degree())
-    pos = nx.spring_layout(filtered_G, k=1.0, iterations=100, seed=42)
-
-    fig, ax = plt.subplots(figsize=(14, 12), dpi=300, facecolor='white')
-    ax.set_facecolor('white')
-
+    pos = nx.spring_layout(filtered_G, k=0.15, iterations=50)
+    
+    plt.figure(figsize=(16, 12), dpi=300)
+    
     edge_weights = [filtered_G[u][v]['weight'] for u, v in filtered_G.edges()]
-    max_weight = max(edge_weights) if edge_weights else 1
+    nx.draw_networkx_edges(filtered_G, pos, width=[w*0.5 for w in edge_weights], 
+                           edge_color='lightblue', alpha=0.6)
     
-    for (u, v), w in zip(filtered_G.edges(), edge_weights):
-        nx.draw_networkx_edges(filtered_G, pos, edgelist=[(u, v)],
-                              width=0.5 + (w/max_weight)*1.2,
-                              edge_color='#E8D5B7',
-                              alpha=0.5,
-                              ax=ax)
+    node_sizes = [nx.degree(filtered_G, n) * 50 for n in filtered_G.nodes()]
+    nx.draw_networkx_nodes(filtered_G, pos, node_size=node_sizes, 
+                          node_color='orange', alpha=0.8)
 
-    node_sizes = [np.sqrt(deg.get(n, 1)) * 80 + 50 for n in filtered_G.nodes()]
+    high_degree_nodes = [n for n in filtered_G.nodes() if nx.degree(filtered_G, n) >= 3]
+    nx.draw_networkx_labels(filtered_G, pos, 
+                           labels={n: n for n in high_degree_nodes},
+                           font_size=8, font_weight='bold')
 
-    node_colors = ['#F4D03F' if deg[n] > 3 else '#C39BD3' for n in filtered_G.nodes()]
-
-    for n in filtered_G.nodes():
-        size = node_sizes[list(filtered_G.nodes()).index(n)]
-        for i in range(3):
-            alpha_val = 0.75 - i * 0.22
-            size_factor = 1 - i * 0.28
-            nx.draw_networkx_nodes(filtered_G, pos, nodelist=[n],
-                                  node_size=size * size_factor,
-                                  node_color=node_colors[list(filtered_G.nodes()).index(n)],
-                                  alpha=alpha_val,
-                                  linewidths=0,
-                                  ax=ax)
-
-    nx.draw_networkx_nodes(filtered_G, pos, node_size=[s*0.12 for s in node_sizes],
-                          node_color='#000000',
-                          alpha=0.65,
-                          ax=ax)
-
-    top_degree = sorted(deg.items(), key=lambda x: x[1], reverse=True)[:10]
-    label_dict = {n: n.split(',')[0].strip() for n, _ in top_degree}
-    
-    nx.draw_networkx_labels(filtered_G, pos, label_dict,
-                           font_size=9,
-                           font_weight='bold',
-                           font_color='#5A4A42',
-                           ax=ax,
-                           bbox=dict(boxstyle="round,pad=0.3", 
-                                     facecolor='#FEF9E7', 
-                                     edgecolor='none', 
-                                     alpha=0.9))
-
-    ax.set_title('Author Collaboration Network', fontsize=16, fontweight='bold', pad=20, color='#333333')
-    ax.axis('off')
-
-    cbar_ax = fig.add_axes([0.15, 0.06, 0.7, 0.03])
-    cmap = cm.get_cmap('viridis')
-    norm = mcolors.Normalize(vmin=2020, vmax=2026)
-    cbar = fig.colorbar(cm.ScalarMappable(norm=norm, cmap=cmap), 
-                        cax=cbar_ax, orientation='horizontal')
-    cbar.set_label('Publication Year', fontsize=11, fontweight='bold', labelpad=10)
-    cbar.set_ticks([2020, 2021, 2022, 2023, 2024, 2025, 2026])
-    cbar.set_ticklabels(['2020', '2021', '2022', '2023', '2024', '2025', '2026'])
-    cbar.outline.set_visible(False)
-
-    plt.tight_layout(rect=[0, 0.08, 1, 1])
+    plt.title('Author Collaboration Network (LLM Multi-Agent Research)', 
+              fontsize=16, fontweight='bold', pad=20)
+    plt.axis('off')
+    plt.tight_layout()
     
     output_file = os.path.join(output_dir, 'author_collaboration_network.png')
-    plt.savefig(output_file, bbox_inches='tight', dpi=300, facecolor='white')
-    plt.close()
-    print("Author collaboration network saved")
+    plt.savefig(output_file, bbox_inches='tight')
+    print(f"作者合作网络图已保存至: {output_file}")
+    
+    return G
 
 
 def build_institution_network():
@@ -240,42 +199,40 @@ def build_institution_network():
     df = pd.read_csv(data_path)
     df.columns = df.columns.str.strip()
 
-    country_counts = df['Source Country'].dropna().value_counts().head(12)
+    G = nx.Graph()
     
-    fig, ax = plt.subplots(figsize=(12, 8), dpi=300, facecolor='white')
+    for idx, row in df.iterrows():
+        source_country = str(row['Source Country']).strip() if pd.notna(row['Source Country']) else "Unknown"
+        if source_country and source_country != "nan":
+            G.add_node(source_country, type='country')
     
-    colors = cm.viridis(np.linspace(0.2, 0.8, len(country_counts)))
+    country_counts = df['Source Country'].dropna().value_counts()
+    for country, count in country_counts.items():
+        if G.has_node(country.strip()):
+            G.nodes[country.strip()]['papers'] = count
+
+    plt.figure(figsize=(14, 10), dpi=300)
+    pos = nx.kamada_kawai_layout(G)
     
-    bars = ax.barh(range(len(country_counts)), country_counts.values,
-                   color=colors, edgecolor='white', linewidth=0.8, height=0.7)
+    node_sizes = [G.nodes[n].get('papers', 1) * 10 for n in G.nodes()]
+    nx.draw_networkx_nodes(G, pos, node_size=node_sizes, 
+                          node_color='green', alpha=0.7)
     
-    ax.set_yticks(range(len(country_counts)))
-    ax.set_yticklabels(country_counts.index, fontsize=11, fontweight='medium')
-    ax.set_xlabel('Number of Publications', fontsize=12, fontweight='bold')
-    ax.set_title('Research Output by Country', fontsize=15, fontweight='bold', pad=15, color='#333333')
-    
-    for i, (bar, count) in enumerate(zip(bars, country_counts.values)):
-        ax.text(count + max(country_counts.values) * 0.008, bar.get_y() + bar.get_height()/2,
-                str(int(count)), va='center', fontsize=10, fontweight='bold', color='#374151')
-    
-    ax.invert_yaxis()
-    
-    for spine in ['top', 'right', 'left']:
-        ax.spines[spine].set_visible(False)
-    ax.spines['bottom'].set_color('#CCCCCC')
-    ax.spines['bottom'].set_linewidth(1)
-    
-    ax.grid(axis='x', alpha=0.25, linestyle='--', color='#CCCCCC')
-    
+    nx.draw_networkx_labels(G, pos, font_size=9, font_weight='bold')
+
+    plt.title('Research Institutions Country Distribution', 
+              fontsize=14, fontweight='bold', pad=20)
+    plt.axis('off')
     plt.tight_layout()
     
     output_file = os.path.join(output_dir, 'institution_country_network.png')
-    plt.savefig(output_file, bbox_inches='tight', dpi=300, facecolor='white')
-    plt.close()
-    print("Country distribution saved")
+    plt.savefig(output_file, bbox_inches='tight')
+    print(f"机构国家分布图已保存至: {output_file}")
+    
+    return G
 
 
-def build_cocitation_network():
+def build_reference_citation_network():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
     output_dir = os.path.join(base_path, 'outputs', 'figures')
@@ -284,77 +241,43 @@ def build_cocitation_network():
     df = pd.read_csv(data_path)
     df.columns = df.columns.str.strip()
 
-    cocitation = defaultdict(int)
+    G = nx.DiGraph()
     
     for idx, row in df.iterrows():
-        refs = str(row['References']).split(';') if pd.notna(row['References']) else []
-        refs = [r.strip() for r in refs if r.strip() and r.strip() != 'nan'][:5]
+        paper_id = row['Lens ID']
+        references = str(row['References']).split(';') if pd.notna(row['References']) else []
+        references = [r.strip() for r in references if r.strip() and r.strip() != "nan"]
         
-        for i, ref1 in enumerate(refs):
-            for j, ref2 in enumerate(refs):
-                if i < j:
-                    cocitation[(ref1, ref2)] += 1
+        G.add_node(paper_id, type='paper', title=str(row['Title'])[:50])
+        
+        for ref_id in references[:10]:
+            G.add_edge(paper_id, ref_id, type='cites')
 
-    edges = [(ref1, ref2, count) for (ref1, ref2), count in cocitation.items() if count >= 2]
-    edges.sort(key=lambda x: x[2], reverse=True)
-    if len(edges) > 50:
-        edges = edges[:50]
+    print(f"引用网络构建完成: {G.number_of_nodes()}个节点, {G.number_of_edges()}条边")
+
+    plt.figure(figsize=(14, 10), dpi=300)
+    pos = nx.spring_layout(G, k=0.2)
     
-    G = nx.Graph()
-    for ref1, ref2, count in edges:
-        G.add_edge(ref1[:50], ref2[:50], weight=count)
-
-    deg = dict(G.degree())
-    pos = nx.spring_layout(G, k=1.5, iterations=100, seed=42)
-
-    fig, ax = plt.subplots(figsize=(14, 12), dpi=300, facecolor='white')
-    ax.set_facecolor('white')
-
-    edge_weights = [G[u][v]['weight'] for u, v in G.edges()]
-    max_weight = max(edge_weights) if edge_weights else 1
+    node_colors = ['red' if G.nodes[n].get('type') == 'paper' else 'blue' for n in G.nodes()]
+    node_sizes = [50 if G.nodes[n].get('type') == 'paper' else 20 for n in G.nodes()]
     
-    for (u, v), w in zip(G.edges(), edge_weights):
-        nx.draw_networkx_edges(G, pos, edgelist=[(u, v)],
-                              width=0.4 + (w/max_weight)*1.0,
-                              edge_color='#D4C4A8',
-                              alpha=0.5,
-                              ax=ax)
+    nx.draw_networkx_nodes(G, pos, node_size=node_sizes, 
+                          node_color=node_colors, alpha=0.6)
+    nx.draw_networkx_edges(G, pos, edge_color='gray', alpha=0.3, arrows=True)
 
-    node_sizes = [deg[n] * 30 + 40 for n in G.nodes()]
-    node_colors = ['#87CEEB' if deg[n] > 2 else '#98FB98' for n in G.nodes()]
-
-    nx.draw_networkx_nodes(G, pos, node_size=node_sizes,
-                          node_color=node_colors,
-                          alpha=0.7,
-                          edgecolors='#FFFFFF',
-                          linewidths=1.5,
-                          ax=ax)
-
-    top_degree = sorted(deg.items(), key=lambda x: x[1], reverse=True)[:8]
-    label_dict = {n: n[:20] + '..' if len(n) > 20 else n for n, _ in top_degree}
-    
-    nx.draw_networkx_labels(G, pos, label_dict,
-                           font_size=8,
-                           font_weight='bold',
-                           font_color='#4A3728',
-                           ax=ax,
-                           bbox=dict(boxstyle="round,pad=0.25", 
-                                     facecolor='#FFF8DC', 
-                                     edgecolor='none', 
-                                     alpha=0.9))
-
-    ax.set_title('Co-citation Network', fontsize=16, fontweight='bold', pad=20, color='#333333')
-    ax.axis('off')
+    plt.title('Citation Reference Network (Simplified)', 
+              fontsize=14, fontweight='bold', pad=20)
+    plt.axis('off')
     plt.tight_layout()
     
     output_file = os.path.join(output_dir, 'citation_network.png')
-    plt.savefig(output_file, bbox_inches='tight', dpi=300, facecolor='white')
-    plt.close()
-    print("Co-citation network saved")
+    plt.savefig(output_file, bbox_inches='tight')
+    print(f"引用网络图已保存至: {output_file}")
+    
+    return G
 
 
 if __name__ == "__main__":
-    build_keyword_cooccurrence()
     build_author_network()
     build_institution_network()
-    build_cocitation_network()
+    build_reference_citation_network()
