@@ -4,10 +4,6 @@
 
 【TOP20 高频关键词】
 ----------------------------------------
-<<<<<<< HEAD
- 7. generative ai               11 occurrences
- 8. agentic ai                  11 occurrences
-16. human-robot interaction      7 occurrences
  1. artificial intelligence     56次
  2. large language models       45次
  3. large language model        24次
@@ -31,9 +27,6 @@
 
 【关键词共现关系(共现>=2次)】
 ----------------------------------------
-<<<<<<< HEAD
-ethics               <-> artificial intelligence co-occurred 11 times
-marketing communication <-> ethics               co-occurred 9 times
 ethics               ↔ artificial intelligence 共现11次
 marketing communication ↔ ethics               共现9次
 artificial intelligence ↔ large language model 共现8次
