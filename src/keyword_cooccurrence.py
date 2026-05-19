@@ -1,13 +1,15 @@
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
+import matplotlib.patheffects as path_effects
 import os
+import numpy as np
 from collections import defaultdict
 
 
 def build_keyword_cooccurrence():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
+    data_path = os.path.join(base_path, 'data', 'processed', 'expanded_data.csv')
     output_dir = os.path.join(base_path, 'outputs', 'figures')
     os.makedirs(output_dir, exist_ok=True)
 
@@ -30,63 +32,100 @@ def build_keyword_cooccurrence():
                 if i < j:
                     cooccurrence[(kw1, kw2)] += 1
 
-    G = nx.Graph()
+    edges = [(kw1, kw2, count) for (kw1, kw2), count in cooccurrence.items() if count >= 5]
+    edges.sort(key=lambda x: x[2], reverse=True)
+    if len(edges) > 40:
+        edges = edges[:40]
     
-    for (kw1, kw2), count in cooccurrence.items():
-        if count >= 2:
-            G.add_edge(kw1, kw2, weight=count)
+    G = nx.Graph()
+    for kw1, kw2, count in edges:
+        G.add_edge(kw1, kw2, weight=count)
 
     for kw, count in keyword_counts.items():
         if kw in G.nodes():
             G.nodes[kw]['count'] = count
 
-    print(f"关键词共现网络构建完成: {G.number_of_nodes()}个节点, {G.number_of_edges()}条边")
+    print("Keyword co-occurrence network: {} nodes, {} edges".format(G.number_of_nodes(), G.number_of_edges()))
 
-    plt.figure(figsize=(18, 14), dpi=300)
+    fig, ax = plt.subplots(figsize=(14, 12), dpi=300, facecolor='#FAFBFC')
+    ax.set_facecolor('#FAFBFC')
     
-    pos = nx.spring_layout(G, k=0.25, iterations=60)
+    pos = nx.spring_layout(G, k=2.0, iterations=120, seed=42)
     
     edge_weights = [G[u][v]['weight'] for u, v in G.edges()]
-    nx.draw_networkx_edges(G, pos, width=[w*0.8 for w in edge_weights], 
-                           edge_color='purple', alpha=0.5)
+    max_weight = max(edge_weights) if edge_weights else 1
     
-    node_sizes = [G.nodes[n].get('count', 1) * 30 for n in G.nodes()]
+    for (u, v), w in zip(G.edges(), edge_weights):
+        alpha_val = 0.12 + (w / max_weight) * 0.38
+        width_val = 0.5 + (w / max_weight) * 2.0
+        nx.draw_networkx_edges(G, pos, edgelist=[(u, v)], 
+                               width=width_val, edge_color='#059669',
+                               alpha=alpha_val, ax=ax, connectionstyle="arc3,rad=0.05")
+    
+    degree_values = [G.degree(n) for n in G.nodes()]
+    max_degree = max(degree_values) if degree_values else 1
+    
+    node_sizes = [300 + (G.degree(n) / max_degree) ** 0.85 * 1400 for n in G.nodes()]
+    
+    colors_kw = ['#059669', '#10B981', '#6EE7B7']
+    node_colors = []
+    for n in G.nodes():
+        ratio = G.degree(n) / max_degree
+        if ratio >= 0.55:
+            node_colors.append(colors_kw[0])
+        elif ratio >= 0.25:
+            node_colors.append(colors_kw[1])
+        else:
+            node_colors.append(colors_kw[2])
+    
     nx.draw_networkx_nodes(G, pos, node_size=node_sizes, 
-                          node_color='yellow', alpha=0.8, edgecolors='black')
+                          node_color=node_colors, alpha=0.92,
+                          edgecolors='white', linewidths=2.5, ax=ax)
 
-    label_threshold = 3
-    labels = {n: n for n in G.nodes() if G.nodes[n].get('count', 1) >= label_threshold}
-    nx.draw_networkx_labels(G, pos, labels, font_size=10, font_weight='bold')
+    top_nodes = sorted(keyword_counts.items(), key=lambda x: x[1], reverse=True)[:8]
+    labels = {n: n.replace('-', ' ').replace('_', ' ').title() 
+              for n, _ in top_nodes if n in G.nodes()}
+    
+    nx.draw_networkx_labels(
+        G, pos, labels, font_size=10, font_weight='600',
+        font_color='#064E3B', ax=ax,
+        bbox=dict(boxstyle="round,pad=0.35", facecolor='white', 
+                  edgecolor='#A7F3D0', linewidth=1.2, alpha=0.95),
+        horizontalalignment='center'
+    )
 
-    plt.title('Keyword Co-occurrence Network (LLM Multi-Agent Research)', 
-              fontsize=16, fontweight='bold', pad=20)
-    plt.axis('off')
-    plt.tight_layout()
+    ax.set_title('Keyword Co-occurrence Network', fontsize=20, fontweight='700',
+                 pad=22, color='#064E3B', loc='left')
+    ax.axis('off')
+    
+    fig.patch.set_facecolor('#FAFBFC')
+    plt.tight_layout(pad=1.5)
     
     output_file = os.path.join(output_dir, 'keyword_cooccurrence_network.png')
-    plt.savefig(output_file, bbox_inches='tight')
-    print(f"关键词共现网络图已保存至: {output_file}")
+    fig.savefig(output_file, bbox_inches='tight', facecolor='#FAFBFC', dpi=300, pad_inches=0.15)
+    print("Keyword co-occurrence network saved to: {}".format(output_file))
+    plt.close(fig)
 
     top_keywords = sorted(keyword_counts.items(), key=lambda x: x[1], reverse=True)[:20]
     output_file_txt = os.path.join(base_path, 'outputs', 'keyword_statistics.txt')
     with open(output_file_txt, 'w', encoding='utf-8') as f:
         f.write("=" * 50 + "\n")
-        f.write("        LLM多智能体领域关键词统计报告\n")
+        f.write("        LLM Multi-Agent Keyword Statistics Report\n")
         f.write("=" * 50 + "\n\n")
         
-        f.write("【TOP20 高频关键词】\n")
+        f.write("【TOP20 Keywords】\n")
         f.write("-" * 40 + "\n")
         for i, (kw, count) in enumerate(top_keywords, 1):
-            f.write(f"{i:2d}. {kw:25} {count:4d}次\n")
+            f.write("{:2d}. {:25} {:4d} occurrences\n".format(i, kw, count))
         
-        f.write("\n【关键词共现关系(共现>=2次)】\n")
+        f.write("\n【Keyword Co-occurrence (>=5)】\n")
         f.write("-" * 40 + "\n")
         sorted_cooccur = sorted(cooccurrence.items(), key=lambda x: x[1], reverse=True)[:30]
         for (kw1, kw2), count in sorted_cooccur:
-            if count >= 2:
-                f.write(f"{kw1:20} ↔ {kw2:20} 共现{count}次\n")
+            if count >= 5:
+                f.write("{:20} <-> {:20} co-occurred {} times\n".format(kw1, kw2, count))
 
-    print(f"关键词统计报告已保存至: {output_file_txt}")
+    print("Keyword statistics saved to: {}".format(output_file_txt))
     
     return G
 

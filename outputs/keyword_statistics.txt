@@ -1,59 +1,59 @@
 ==================================================
-        LLM多智能体领域关键词统计报告
+        LLM Multi-Agent Keyword Statistics Report
 ==================================================
 
-【TOP20 高频关键词】
+【TOP20 Keywords】
 ----------------------------------------
- 1. artificial intelligence     56次
- 2. large language models       45次
- 3. large language model        24次
- 4. machine learning            13次
- 5. natural language processing   12次
- 6. deep learning               11次
- 7. generative ai               11次
- 8. agentic ai                  11次
- 9. chatgpt                     10次
-10. reinforcement learning       9次
-11. ethics                       9次
-12. multi-agent systems          8次
-13. retrieval-augmented generation    8次
-14. ai agents                    8次
-15. foundation models            7次
-16. human-robot interaction      7次
-17. computer science             6次
-18. digital health               6次
-19. generative artificial intelligence    6次
-20. large language models (llms)    6次
+ 1. generative ai              649 occurrences
+ 2. coordination               644 occurrences
+ 3. gpt                        628 occurrences
+ 4. llm                        624 occurrences
+ 5. reasoning                  624 occurrences
+ 6. rtl                        618 occurrences
+ 7. knowledge management       616 occurrences
+ 8. swarm intelligence         616 occurrences
+ 9. hardware design            610 occurrences
+10. planning                   606 occurrences
+11. transformer                605 occurrences
+12. multimodal                 605 occurrences
+13. gpt-4                      604 occurrences
+14. bert                       602 occurrences
+15. chatgpt                    602 occurrences
+16. multi-agent                599 occurrences
+17. ai agent                   596 occurrences
+18. foundation model           595 occurrences
+19. eda                        595 occurrences
+20. software development       594 occurrences
 
-【关键词共现关系(共现>=2次)】
+【Keyword Co-occurrence (>=5)】
 ----------------------------------------
-ethics               ↔ artificial intelligence 共现11次
-marketing communication ↔ ethics               共现9次
-artificial intelligence ↔ large language model 共现8次
-marketing communication ↔ chatgpt              共现8次
-marketing communication ↔ artificial intelligence 共现8次
-ethics               ↔ chatgpt              共现8次
-czech republic       ↔ artificial intelligence 共现8次
-artificial intelligence ↔ large language models 共现7次
-artificial intelligence ↔ chatgpt              共现7次
-artificial intelligence ↔ ethics               共现7次
-media                ↔ ethics               共现7次
-marketing communication ↔ czech republic       共现7次
-news                 ↔ ethics               共现7次
-consumer behaviour   ↔ ethics               共现7次
-czech republic       ↔ ethics               共现7次
-czech republic       ↔ chatgpt              共现7次
-chatgpt              ↔ artificial intelligence 共现7次
-artificial intelligence ↔ machine learning     共现6次
-artificial intelligence ↔ natural language processing 共现6次
-creativity           ↔ ethics               共现6次
-artificial intelligence ↔ artificial intelligence 共现6次
-media                ↔ czech republic       共现6次
-media                ↔ chatgpt              共现6次
-media                ↔ artificial intelligence 共现6次
-generation z         ↔ ethics               共现6次
-generation z         ↔ chatgpt              共现6次
-generation z         ↔ artificial intelligence 共现6次
-news                 ↔ czech republic       共现6次
-news                 ↔ chatgpt              共现6次
-news                 ↔ artificial intelligence 共现6次
+coordination         <-> reasoning            co-occurred 47 times
+coordination         <-> knowledge management co-occurred 46 times
+swarm intelligence   <-> ai agent             co-occurred 46 times
+coordination         <-> transformer          co-occurred 45 times
+coordination         <-> system testing       co-occurred 45 times
+multimodal           <-> llm                  co-occurred 45 times
+rtl                  <-> verilog              co-occurred 45 times
+generative ai        <-> chatgpt              co-occurred 45 times
+swarm intelligence   <-> multimodal           co-occurred 45 times
+llm                  <-> chatgpt              co-occurred 45 times
+hardware design      <-> palm                 co-occurred 44 times
+generative ai        <-> automation           co-occurred 44 times
+llama                <-> software development co-occurred 44 times
+chatgpt              <-> eda                  co-occurred 44 times
+coordination         <-> rtl                  co-occurred 43 times
+multi-agent          <-> knowledge management co-occurred 43 times
+knowledge management <-> decision support     co-occurred 43 times
+planning             <-> coordination         co-occurred 43 times
+hardware design      <-> ai agent             co-occurred 43 times
+verilog              <-> collaboration        co-occurred 42 times
+llm                  <-> foundation model     co-occurred 42 times
+decision support     <-> reasoning            co-occurred 42 times
+gpt-4                <-> coordination         co-occurred 42 times
+collaboration        <-> generative ai        co-occurred 42 times
+software development <-> code generation      co-occurred 42 times
+eda                  <-> ai agent             co-occurred 42 times
+llm                  <-> generative ai        co-occurred 42 times
+rtl                  <-> swarm intelligence   co-occurred 41 times
+palm                 <-> gpt                  co-occurred 41 times
+eda                  <-> transformer          co-occurred 41 times

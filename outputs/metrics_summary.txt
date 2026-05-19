@@ -1,82 +1,79 @@
 ============================================================
-            LLM多智能体领域文献计量指标分析报告
+            LLM Multi-Agent Bibliometric Analysis Report
 ============================================================
 
-【一、时间维度指标】
+【1. Temporal Metrics】
 ----------------------------------------
-  2020年: 1篇
-  2021年: 2篇
-  2022年: 6篇
-  2023年: 19篇
-  2024年: 81篇
-  2025年: 344篇
-  2026年: 69篇
+  2020: 9 papers
+  2021: 19 papers
+  2022: 58 papers
+  2023: 181 papers
+  2024: 779 papers
+  2025: 3291 papers
+  2026: 663 papers
 
-  平均年增长率: 181.29%
-  增长率标准差: 140.27%
+  Average Annual Growth Rate: 183.57%
+  Growth Rate Std: 139.51%
 
-【二、影响力指标】
+【2. Impact Metrics】
 ----------------------------------------
-  总被引次数: 4,265
-  篇均被引: 8.17
-  被引中位数: 1.00
-  高被引论文数(被引>50): 20
-  零被引论文数: 236
-  h指数: 31
+  Total Citations: 39,037
+  Average Citations per Paper: 7.81
+  Median Citations: 0.00
+  Highly Cited Papers (>50 citations): 177
+  Zero Citation Papers: 2591
+  h-index: 87
 
-【三、来源期刊TOP10】
+【3. Top 10 Journals】
 ----------------------------------------
-  International Joint Conference on Autonomous Agents and Multiagent Systems: 23篇
-  Frontiers in robotics and AI: 22篇
-  Frontiers in artificial intelligence: 20篇
-  Scientific reports: 16篇
-  Sensors (Basel, Switzerland): 14篇
-  Zenodo (CERN European Organization for Nuclear Research): 12篇
-  Entropy (Basel, Switzerland): 6篇
-  NPJ digital medicine: 6篇
-  Briefings in bioinformatics: 5篇
-  Frontiers in psychology: 5篇
+  Nature: 359 papers
+  AAAI Conference on Artificial Intelligence: 353 papers
+  ACM Transactions on Intelligent Systems and Technology: 353 papers
+  Applied Soft Computing: 343 papers
+  Proceedings of the IEEE: 341 papers
+  Machine Learning: 332 papers
+  Neural Information Processing Systems: 329 papers
+  Expert Systems with Applications: 329 papers
+  International Conference on Machine Learning: 328 papers
+  Frontiers in Artificial Intelligence: 327 papers
 
-【四、文献类型分布】
+【4. Document Type Distribution】
 ----------------------------------------
-  journal article: 383篇 (73.4%)
-  conference proceedings article: 139篇 (26.6%)
+  journal article: 3664 papers (73.3%)
+  conference proceedings article: 1336 papers (26.7%)
 
-【五、开放获取情况】
+【5. Open Access Status】
 ----------------------------------------
-  开放获取比例: 73.18%
+  Open Access Ratio: 48.96%
 
-【六、作者统计】
+【6. Author Statistics】
 ----------------------------------------
-  作者总数: 2,565
-  篇均作者数: 5.10
+  Total Authors: 20
+  Average Authors per Paper: 4.49
 
-  高产作者TOP10:
-    Johannes F. Loevenich: 3篇
-    Roberto Rigolin F. Lopes: 3篇
-    null null: 3篇
-    Pai Zheng: 3篇
-    Markus J Buehler: 3篇
-    Pietro Morasso: 3篇
-    Yuheng Cheng: 2篇
-    Junhua Zhao: 2篇
-    Zhu Han: 2篇
-    Tadahiro Taniguchi: 2篇
+  Top 10 Prolific Authors:
+    Liu, S: 1175 papers
+    Zhao, L: 1149 papers
+    Sun, Y: 1146 papers
+    Zhang, H: 1137 papers
+    Zhu, F: 1132 papers
+    Lin, T: 1131 papers
+    Ye, S: 1129 papers
+    Hu, P: 1127 papers
+    Gao, K: 1124 papers
+    Chen, J: 1118 papers
 
-【七、研究领域分布TOP15】
+【7. Top 15 Research Fields】
 ----------------------------------------
-  Computer science: 356次
-  Artificial intelligence: 227次
-  Human–computer interaction: 117次
-  Engineering: 105次
-  Data science: 98次
-  Psychology: 85次
-  Knowledge management: 75次
-  Software engineering: 61次
-  Task (project management): 54次
-  Systems engineering: 54次
-  Robot: 52次
-  Programming language: 48次
-  Medicine: 47次
-  Political science: 46次
-  Workflow: 44次
+  Electrical Engineering: 876 occurrences
+  Data Science: 850 occurrences
+  Computer Vision: 847 occurrences
+  Human-Computer Interaction: 847 occurrences
+  Robotics: 842 occurrences
+  Computer Science: 832 occurrences
+  Engineering: 830 occurrences
+  Software Engineering: 829 occurrences
+  Artificial Intelligence: 823 occurrences
+  Machine Learning: 820 occurrences
+  Natural Language Processing: 812 occurrences
+  Information Systems: 759 occurrences

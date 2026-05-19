@@ -1,25 +1,70 @@
-# 检索式参数化配置 v0.1
-version: "0.1"
+# 检索式参数化配置 v0.2 - 扩展版
+version: "0.2"
 
 query:
-  # 检索对象 (Object)：大模型核心术语
   object:
     - "Large Language Model*"
     - "LLM*"
     - "Generative AI"
     - "Foundation Model*"
     - "ChatGPT"
-  
-  # 检索方法 (Method)：协同与多智能体相关词
+    - "GPT-4"
+    - "GPT-3*"
+    - "AI Agent*"
+    - "LLM Agent*"
+    - "Language Model*"
+    - "Transformer*"
+    - "BERT*"
+    - "T5*"
+    - "PaLM*"
+    - "LLaMA*"
+    - "GPT*"
+    - "OpenAI"
+    - "Multimodal AI"
+    - "AI Assistant"
+
   method:
     - "Multi-agent*"
     - "Collaboration"
     - "Coordination"
     - "Cooperation"
     - "Multi-agent system*"
+    - "Agent collaboration"
+    - "Agent coordination"
+    - "Multi-model collaboration"
+    - "Distributed AI"
+    - "Swarm intelligence"
+    - "Collective intelligence"
+    - "AI teamwork"
+    - "Model ensemble"
+    - "Agent-based system*"
+    - "Intelligent agent*"
+    - "Conversational AI"
+    - "Dialog system*"
+    - "Task decomposition"
+    - "Tool use"
+    - "Planning"
+    - "Reasoning"
 
-  # 限定条件 (Constraint)：时间与文献类型 [cite: 350-352]
+  application:
+    - "Code generation"
+    - "Software development"
+    - "EDA"
+    - "Hardware design"
+    - "Verilog"
+    - "RTL"
+    - "System testing"
+    - "Scientific computing"
+    - "Healthcare"
+    - "Finance"
+    - "Education"
+    - "Content creation"
+    - "Customer service"
+    - "Automation"
+    - "Decision support"
+    - "Knowledge management"
+
   constraint:
-    time_window: [2020, 2026]
-    doc_type: ["Article", "Review", "Conference Paper"]
+    time_window: [2018, 2026]
+    doc_type: ["Article", "Review", "Conference Paper", "Letter", "Short Communication"]
     language: "English"
