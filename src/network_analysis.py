@@ -10,7 +10,7 @@ from collections import defaultdict
 
 def build_keyword_cooccurrence():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    data_path = os.path.join(base_path, 'data', 'processed', 'expanded_data.csv')
+    data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
     output_dir = os.path.join(base_path, 'outputs', 'figures')
     os.makedirs(output_dir, exist_ok=True)
 
@@ -130,7 +130,7 @@ def build_keyword_cooccurrence():
 
 def build_author_network():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    data_path = os.path.join(base_path, 'data', 'processed', 'expanded_data.csv')
+    data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
     output_dir = os.path.join(base_path, 'outputs', 'figures')
     os.makedirs(output_dir, exist_ok=True)
 
@@ -233,7 +233,7 @@ def build_author_network():
 
 def build_institution_network():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    data_path = os.path.join(base_path, 'data', 'processed', 'expanded_data.csv')
+    data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
     output_dir = os.path.join(base_path, 'outputs', 'figures')
     os.makedirs(output_dir, exist_ok=True)
 
@@ -277,7 +277,7 @@ def build_institution_network():
 
 def build_cocitation_network():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    data_path = os.path.join(base_path, 'data', 'processed', 'expanded_data.csv')
+    data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
     output_dir = os.path.join(base_path, 'outputs', 'figures')
     os.makedirs(output_dir, exist_ok=True)
 

@@ -6,7 +6,7 @@ import networkx as nx
 
 def run_sensitivity_analysis():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    data_path = os.path.join(base_path, 'data', 'processed', 'expanded_data.csv')
+    data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
     output_dir = os.path.join(base_path, 'outputs')
     os.makedirs(output_dir, exist_ok=True)
 

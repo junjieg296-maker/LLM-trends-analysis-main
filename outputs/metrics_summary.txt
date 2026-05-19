@@ -4,76 +4,79 @@
 
 【1. Temporal Metrics】
 ----------------------------------------
-  2020: 9 papers
-  2021: 19 papers
-  2022: 58 papers
-  2023: 181 papers
-  2024: 779 papers
-  2025: 3291 papers
-  2026: 663 papers
+  2020: 1 papers
+  2021: 2 papers
+  2022: 6 papers
+  2023: 19 papers
+  2024: 81 papers
+  2025: 344 papers
+  2026: 69 papers
 
-  Average Annual Growth Rate: 183.57%
-  Growth Rate Std: 139.51%
+  Average Annual Growth Rate: 181.29%
+  Growth Rate Std: 140.27%
 
 【2. Impact Metrics】
 ----------------------------------------
-  Total Citations: 39,037
-  Average Citations per Paper: 7.81
-  Median Citations: 0.00
-  Highly Cited Papers (>50 citations): 177
-  Zero Citation Papers: 2591
-  h-index: 87
+  Total Citations: 4,265
+  Average Citations per Paper: 8.17
+  Median Citations: 1.00
+  Highly Cited Papers (>50 citations): 20
+  Zero Citation Papers: 236
+  h-index: 31
 
 【3. Top 10 Journals】
 ----------------------------------------
-  Nature: 359 papers
-  AAAI Conference on Artificial Intelligence: 353 papers
-  ACM Transactions on Intelligent Systems and Technology: 353 papers
-  Applied Soft Computing: 343 papers
-  Proceedings of the IEEE: 341 papers
-  Machine Learning: 332 papers
-  Neural Information Processing Systems: 329 papers
-  Expert Systems with Applications: 329 papers
-  International Conference on Machine Learning: 328 papers
-  Frontiers in Artificial Intelligence: 327 papers
+  International Joint Conference on Autonomous Agents and Multiagent Systems: 23 papers
+  Frontiers in robotics and AI: 22 papers
+  Frontiers in artificial intelligence: 20 papers
+  Scientific reports: 16 papers
+  Sensors (Basel, Switzerland): 14 papers
+  Zenodo (CERN European Organization for Nuclear Research): 12 papers
+  Entropy (Basel, Switzerland): 6 papers
+  NPJ digital medicine: 6 papers
+  Briefings in bioinformatics: 5 papers
+  Frontiers in psychology: 5 papers
 
 【4. Document Type Distribution】
 ----------------------------------------
-  journal article: 3664 papers (73.3%)
-  conference proceedings article: 1336 papers (26.7%)
+  journal article: 383 papers (73.4%)
+  conference proceedings article: 139 papers (26.6%)
 
 【5. Open Access Status】
 ----------------------------------------
-  Open Access Ratio: 48.96%
+  Open Access Ratio: 0.00%
 
 【6. Author Statistics】
 ----------------------------------------
-  Total Authors: 20
-  Average Authors per Paper: 4.49
+  Total Authors: 2,565
+  Average Authors per Paper: 5.10
 
   Top 10 Prolific Authors:
-    Liu, S: 1175 papers
-    Zhao, L: 1149 papers
-    Sun, Y: 1146 papers
-    Zhang, H: 1137 papers
-    Zhu, F: 1132 papers
-    Lin, T: 1131 papers
-    Ye, S: 1129 papers
-    Hu, P: 1127 papers
-    Gao, K: 1124 papers
-    Chen, J: 1118 papers
+    Johannes F. Loevenich: 3 papers
+    Roberto Rigolin F. Lopes: 3 papers
+    null null: 3 papers
+    Pai Zheng: 3 papers
+    Markus J Buehler: 3 papers
+    Pietro Morasso: 3 papers
+    Yuheng Cheng: 2 papers
+    Junhua Zhao: 2 papers
+    Zhu Han: 2 papers
+    Tadahiro Taniguchi: 2 papers
 
 【7. Top 15 Research Fields】
 ----------------------------------------
-  Electrical Engineering: 876 occurrences
-  Data Science: 850 occurrences
-  Computer Vision: 847 occurrences
-  Human-Computer Interaction: 847 occurrences
-  Robotics: 842 occurrences
-  Computer Science: 832 occurrences
-  Engineering: 830 occurrences
-  Software Engineering: 829 occurrences
-  Artificial Intelligence: 823 occurrences
-  Machine Learning: 820 occurrences
-  Natural Language Processing: 812 occurrences
-  Information Systems: 759 occurrences
+  Computer science: 356 occurrences
+  Artificial intelligence: 227 occurrences
+  Human–computer interaction: 117 occurrences
+  Engineering: 105 occurrences
+  Data science: 98 occurrences
+  Psychology: 85 occurrences
+  Knowledge management: 75 occurrences
+  Software engineering: 61 occurrences
+  Task (project management): 54 occurrences
+  Systems engineering: 54 occurrences
+  Robot: 52 occurrences
+  Programming language: 48 occurrences
+  Medicine: 47 occurrences
+  Political science: 46 occurrences
+  Workflow: 44 occurrences
