@@ -4,6 +4,23 @@
 
 ---
 
+## [v1.0-m3-final] - 2026-05-23 (M3 终稿与可复现 Release)
+### 核心交付
+- 完成 `paper/mini_review_final.md`，形成课程 mini review 终稿。
+- 完成 `reports/m3_final_report.md`，汇总 M1-M3 交付物、核心结果与复现方式。
+- 新增 `RELEASE_NOTES.md` 与 `data/README.md`，补齐 GitHub 提交说明和数据说明。
+- 重构 `README.md` 为最终提交版本，展示核心结论、图表、仓库结构和复现命令。
+
+### 功能改动
+- 新增 `run_pipeline.py`，提供一键复现入口。
+- 新增 `src/milestone_papers.py`，生成 Top 10 高被引 milestone 候选论文表。
+- 新增 `src/polished_m2_figures.py`，生成提交级 M2 图表。
+- 修复关键词共现自连边问题，单篇文献内关键词先标准化去重。
+- 修复作者统计中的 `null null` 等无效作者污染。
+- 移除词云脚本运行时下载停用词的网络依赖。
+
+---
+
 ## [v1.2.0] - 2026-03-29 (M1 收官与结构优化)
 ### 🏗️ 架构重构 (Refactor)
 - **路径规范化**：将数据质检报告移动至 `reports/` 根目录，删除多余的 `data/` 子文件夹。
