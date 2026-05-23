@@ -1,7 +1,20 @@
 import pandas as pd
 import numpy as np
 import os
-from scipy import stats
+
+
+def split_clean_authors(author_cell):
+    if pd.isna(author_cell):
+        return []
+
+    invalid_names = {"", "null", "null null", "nan", "none", "unknown"}
+    authors = []
+    for author in str(author_cell).split(';'):
+        clean_author = " ".join(author.strip().split())
+        if clean_author.lower() in invalid_names:
+            continue
+        authors.append(clean_author)
+    return authors
 
 
 def calculate_metrics():
@@ -58,11 +71,11 @@ def calculate_metrics():
     # --- 7. 作者分析 ---
     all_authors = []
     for authors in df['Author/s'].dropna().astype(str):
-        all_authors.extend([a.strip() for a in authors.split(';')])
+        all_authors.extend(split_clean_authors(authors))
     author_counts = pd.Series(all_authors).value_counts().head(10)
     metrics['高产作者TOP10'] = author_counts.to_dict()
     metrics['作者总数'] = len(set(all_authors))
-    metrics['篇均作者数'] = df['Author/s'].dropna().apply(lambda x: len([a.strip() for a in x.split(';')])).mean()
+    metrics['篇均作者数'] = df['Author/s'].apply(lambda x: len(split_clean_authors(x))).mean()
 
     # --- 8. 研究领域分布 ---
     fields = []

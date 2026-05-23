@@ -2,8 +2,6 @@ import pandas as pd
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 import os
-import nltk
-from nltk.corpus import stopwords
 
 
 def generate_word_cloud():
@@ -11,12 +9,6 @@ def generate_word_cloud():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
     output_dir = os.path.join(base_path, 'outputs', 'figures')
-
-    # 下载停用词表（如果没下过的话）
-    try:
-        nltk.data.find('corpora/stopwords')
-    except LookupError:
-        nltk.download('stopwords')
 
     # 2. 读取数据
     df = pd.read_csv(data_path)
@@ -28,8 +20,6 @@ def generate_word_cloud():
     # 除了系统默认的，我们还可以手动添加一些干扰词
     custom_stopwords = set(STOPWORDS)
     custom_stopwords.update(["based", "using", "study", "analysis", "approach", "framework", "system"])
-    # 加上 nltk 的英文停用词
-    custom_stopwords.update(stopwords.words('english'))
 
     # 4. 生成词云
     print("🚀 正在分析关键词并生成词云...")

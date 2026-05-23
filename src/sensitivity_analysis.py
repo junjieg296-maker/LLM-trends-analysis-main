@@ -4,6 +4,35 @@ import os
 import networkx as nx
 
 
+def normalize_keywords(raw_keywords):
+    if pd.isna(raw_keywords):
+        return []
+
+    seen = set()
+    normalized = []
+    for keyword in str(raw_keywords).split(';'):
+        clean_keyword = " ".join(keyword.strip().lower().split())
+        if len(clean_keyword) <= 2 or clean_keyword in seen:
+            continue
+        seen.add(clean_keyword)
+        normalized.append(clean_keyword)
+    return normalized
+
+
+def split_clean_authors(author_cell):
+    if pd.isna(author_cell):
+        return []
+
+    invalid_names = {"", "null", "null null", "nan", "none", "unknown"}
+    authors = []
+    for author in str(author_cell).split(';'):
+        clean_author = " ".join(author.strip().split())
+        if clean_author.lower() in invalid_names:
+            continue
+        authors.append(clean_author)
+    return authors
+
+
 def run_sensitivity_analysis():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
@@ -21,8 +50,7 @@ def run_sensitivity_analysis():
     for threshold in thresholds:
         cooccurrence = {}
         for idx, row in df.iterrows():
-            keywords = str(row['Keywords']).split(';') if pd.notna(row['Keywords']) else []
-            keywords = [k.strip().lower() for k in keywords if k.strip() and len(k.strip()) > 2]
+            keywords = normalize_keywords(row['Keywords'])
             for i, kw1 in enumerate(keywords):
                 for j, kw2 in enumerate(keywords):
                     if i < j:
@@ -49,8 +77,7 @@ def run_sensitivity_analysis():
     for threshold in [1, 2, 3, 5, 10]:
         author_pairs = {}
         for idx, row in df.iterrows():
-            authors = str(row['Author/s']).split(';') if pd.notna(row['Author/s']) else []
-            authors = [a.strip() for a in authors if a.strip()]
+            authors = split_clean_authors(row['Author/s'])
             for i, a1 in enumerate(authors):
                 for j, a2 in enumerate(authors):
                     if i < j:
@@ -94,8 +121,7 @@ def run_sensitivity_analysis():
     degree_thresholds = [1, 2, 3, 5, 10]
     G = nx.Graph()
     for idx, row in df.iterrows():
-        authors = str(row['Author/s']).split(';') if pd.notna(row['Author/s']) else []
-        authors = [a.strip() for a in authors if a.strip()]
+        authors = split_clean_authors(row['Author/s'])
         for i, a1 in enumerate(authors):
             for j, a2 in enumerate(authors):
                 if i < j:

@@ -5,6 +5,22 @@ import os
 from collections import defaultdict
 
 
+def normalize_keywords(raw_keywords):
+    """Normalize and de-duplicate keywords within one paper before counting pairs."""
+    if pd.isna(raw_keywords):
+        return []
+
+    seen = set()
+    normalized = []
+    for keyword in str(raw_keywords).split(';'):
+        clean_keyword = " ".join(keyword.strip().lower().split())
+        if len(clean_keyword) <= 2 or clean_keyword in seen:
+            continue
+        seen.add(clean_keyword)
+        normalized.append(clean_keyword)
+    return normalized
+
+
 def build_keyword_cooccurrence():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
@@ -18,8 +34,7 @@ def build_keyword_cooccurrence():
     keyword_counts = defaultdict(int)
 
     for idx, row in df.iterrows():
-        keywords = str(row['Keywords']).split(';') if pd.notna(row['Keywords']) else []
-        keywords = [k.strip().lower() for k in keywords if k.strip() and len(k.strip()) > 2]
+        keywords = normalize_keywords(row['Keywords'])
         
         if len(keywords) < 2:
             continue
@@ -83,7 +98,7 @@ def build_keyword_cooccurrence():
         f.write("-" * 40 + "\n")
         sorted_cooccur = sorted(cooccurrence.items(), key=lambda x: x[1], reverse=True)[:30]
         for (kw1, kw2), count in sorted_cooccur:
-            if count >= 2:
+            if count >= 2 and kw1 != kw2:
                 f.write(f"{kw1:20} ↔ {kw2:20} 共现{count}次\n")
 
     print(f"关键词统计报告已保存至: {output_file_txt}")

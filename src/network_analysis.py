@@ -8,6 +8,20 @@ import matplotlib.colors as mcolors
 import matplotlib.cm as cm
 
 
+def split_clean_authors(author_cell):
+    if pd.isna(author_cell):
+        return []
+
+    invalid_names = {"", "null", "null null", "nan", "none", "unknown"}
+    authors = []
+    for author in str(author_cell).split(';'):
+        clean_author = " ".join(author.strip().split())
+        if clean_author.lower() in invalid_names:
+            continue
+        authors.append(clean_author)
+    return authors
+
+
 def build_keyword_cooccurrence():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
@@ -140,8 +154,7 @@ def build_author_network():
     G = nx.Graph()
     
     for idx, row in df.iterrows():
-        authors = str(row['Author/s']).split(';') if pd.notna(row['Author/s']) else []
-        authors = [a.strip() for a in authors if a.strip()]
+        authors = split_clean_authors(row['Author/s'])
         
         for i, author1 in enumerate(authors):
             for j, author2 in enumerate(authors):
