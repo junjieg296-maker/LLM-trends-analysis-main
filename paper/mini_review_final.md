@@ -21,6 +21,10 @@
 3. 哪些论文和应用方向构成当前研究的知识锚点？
 4. 未来研究需要突破哪些方法和应用瓶颈？
 
+![Fig. 1 Review framework](../outputs/figures/review_framework.png)
+
+**图 1 综述写作框架。** 本文先从 522 篇清洗后的 Lens.org 文献出发，提取发文趋势、被引影响力、关键词共现和合作网络等计量证据，再将这些证据转化为四条技术叙事线：任务规划、科学发现、人机协作和垂直智能体应用。
+
 ## 2. 数据与方法
 
 ### 2.1 数据来源与检索策略
@@ -52,9 +56,17 @@
 
 从影响力指标看，522 篇文献总被引次数为 4,265 次，篇均被引 8.17 次，被引中位数为 1.00 次，h 指数为 31。零被引论文数为 236 篇，占比约 45.2%。这种"高增长、高稀释"结构是新兴领域的典型特征：少数早期论文和综述论文快速积累引用，而大量 2024-2025 年新发表论文尚未经历完整引用周期。
 
+![Fig. 2 Annual publication trend](../outputs/figures/publication_trend.png)
+
+**图 2 年度发文趋势。** 2024-2025 年发文量快速增长，说明 LLM 多智能体协作已经从早期探索进入高关注度扩张阶段。2026 年数据尚未覆盖完整年份，因此只作为阶段性观察。
+
 ### 3.2 主题结构：从 LLM 技术底座到 agentic AI 系统
 
 关键词统计显示，最高频关键词包括 `artificial intelligence`、`large language models`、`large language model`、`machine learning`、`natural language processing`、`deep learning`、`generative ai`、`agentic ai`、`chatgpt`、`reinforcement learning`、`ethics`、`multi-agent systems`、`retrieval-augmented generation` 和 `ai agents`。
+
+![Fig. 3 Keyword co-occurrence map](../outputs/figures/keyword_cooccurrence_network.png)
+
+**图 3 关键词共现图。** 节点大小表示关键词出现频次，连线表示关键词共现关系。图中可以看到 LLM/AI 技术底座、智能体协作、能力增强和治理应用四个主题层次。
 
 根据关键词共现结构，可以将该领域划分为四个主题层次。
 
@@ -70,11 +82,23 @@
 
 作者统计显示，样本涉及 2,564 名作者，篇均作者数为 5.07。高产作者最高发文量仅为 3 篇，说明该领域尚未形成高度集中的核心作者群体。作者合作网络在过滤一次性合作后，仅保留有限数量的稳定合作组件，表明当前研究仍以小团队和项目型合作为主。
 
+![Fig. 4 Author collaboration network](../outputs/figures/author_collaboration_network.png)
+
+**图 4 作者合作网络。** 图中仅展示重复合作关系，过滤掉大量一次性合作边后，网络呈现多个小规模组件，说明该领域仍处于团队分散和快速扩张阶段。
+
 来源期刊与会议分布也体现出跨学科特征。International Joint Conference on Autonomous Agents and Multiagent Systems、Frontiers in Robotics and AI、Frontiers in Artificial Intelligence、Scientific Reports、Sensors、NPJ Digital Medicine 等来源均位居前列。研究领域分布中，Computer science、Artificial intelligence、Human-computer interaction、Engineering、Data science、Psychology、Knowledge management、Software engineering、Robot 和 Medicine 等领域均有较高频次。这说明 LLM 多智能体协作正在从计算机科学内部议题扩展到工程、机器人、医学和社会技术系统。
+
+![Fig. 5 Institution and country distribution](../outputs/figures/institution_country_network.png)
+
+**图 5 国家/地区分布。** Lens.org 元数据显示，瑞士、美国和英国等国家/地区在样本中出现频次较高。同时，部分记录缺失国家字段，因此图中单独标注缺失值，避免隐藏数据偏差。
 
 ## 4. 技术叙事线：从图谱证据到综述框架
 
 文献计量结果提供了主题结构和高影响力论文线索。结合 Top 10 高被引 milestone 候选论文，本文将 LLM 多智能体协作研究归纳为四条主要技术叙事线。
+
+![Fig. 6 Milestone paper influence map](../outputs/figures/citation_network.png)
+
+**图 6 Milestone 候选论文影响力图。** 图中按 Lens.org 被引次数展示 Top 10 高影响力候选论文。这些论文为后续技术叙事线提供知识锚点，包括化学智能体、机器人规划、临床智能体、人机协作和人机机器人交互等方向。
 
 ### 4.1 多智能体任务规划与自动化工作流
 
