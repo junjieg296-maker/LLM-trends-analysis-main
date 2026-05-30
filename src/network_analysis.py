@@ -3,7 +3,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import os
 import numpy as np
-from collections import defaultdict
+import textwrap
+from collections import Counter, defaultdict
 import matplotlib.colors as mcolors
 import matplotlib.cm as cm
 
@@ -20,6 +21,30 @@ def split_clean_authors(author_cell):
             continue
         authors.append(clean_author)
     return authors
+
+
+def split_clean_references(reference_cell):
+    if pd.isna(reference_cell):
+        return []
+
+    references = []
+    seen = set()
+    for reference in str(reference_cell).split(';'):
+        clean_reference = " ".join(reference.strip().split())
+        if not clean_reference or clean_reference.lower() == "nan":
+            continue
+        if clean_reference in seen:
+            continue
+        seen.add(clean_reference)
+        references.append(clean_reference)
+    return references
+
+
+def shorten_title(title, max_chars=58):
+    clean_title = " ".join(str(title).replace("\n", " ").split())
+    if len(clean_title) <= max_chars:
+        return clean_title
+    return clean_title[: max_chars - 3].rstrip() + "..."
 
 
 def build_keyword_cooccurrence():
@@ -244,6 +269,231 @@ def build_institution_network():
     return G
 
 
+def build_reference_cocitation_network(min_cited=2, max_nodes=36):
+    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
+    output_dir = os.path.join(base_path, 'outputs', 'figures')
+    os.makedirs(output_dir, exist_ok=True)
+
+    df = pd.read_csv(data_path)
+    df.columns = df.columns.str.strip()
+
+    corpus_ids = set(df['Lens ID'].dropna().astype(str).str.strip())
+    id_to_meta = {}
+    for _, row in df.iterrows():
+        lens_id = str(row.get('Lens ID', '')).strip()
+        if not lens_id:
+            continue
+        id_to_meta[lens_id] = {
+            'title': str(row.get('Title', '')).strip(),
+            'year': pd.to_numeric(row.get('Publication Year'), errors='coerce'),
+            'citations': pd.to_numeric(row.get('Citing Works Count'), errors='coerce'),
+            'source': str(row.get('Source Title', '')).strip(),
+        }
+
+    reference_counts = Counter()
+    cocitation_counts = Counter()
+    citing_years = defaultdict(list)
+
+    for _, row in df.iterrows():
+        publication_year = pd.to_numeric(row.get('Publication Year'), errors='coerce')
+        references = [
+            reference for reference in split_clean_references(row.get('References'))
+            if reference in corpus_ids
+        ]
+
+        for reference in references:
+            reference_counts[reference] += 1
+            if not pd.isna(publication_year):
+                citing_years[reference].append(int(publication_year))
+
+        for i, ref_a in enumerate(references):
+            for ref_b in references[i + 1:]:
+                cocitation_counts[tuple(sorted((ref_a, ref_b)))] += 1
+
+    selected_references = [
+        reference for reference, count in reference_counts.most_common(max_nodes)
+        if count >= min_cited
+    ]
+
+    G = nx.Graph()
+    for reference in selected_references:
+        meta = id_to_meta.get(reference, {})
+        year = meta.get('year', np.nan)
+        avg_citing_year = np.mean(citing_years[reference]) if citing_years[reference] else np.nan
+        G.add_node(
+            reference,
+            count=reference_counts[reference],
+            title=meta.get('title', reference),
+            year=int(year) if not pd.isna(year) else None,
+            avg_citing_year=float(avg_citing_year) if not pd.isna(avg_citing_year) else None,
+            source=meta.get('source', ''),
+        )
+
+    for (ref_a, ref_b), weight in cocitation_counts.items():
+        if ref_a in G and ref_b in G and weight >= 1:
+            G.add_edge(ref_a, ref_b, weight=weight)
+
+    isolates = list(nx.isolates(G))
+    G.remove_nodes_from(isolates)
+
+    print(
+        f"Reference co-citation network built: "
+        f"{G.number_of_nodes()} nodes, {G.number_of_edges()} edges"
+    )
+
+    if G.number_of_nodes() == 0:
+        print("No co-citation network generated because no internal co-cited references met the threshold.")
+        return G
+
+    communities = list(nx.algorithms.community.greedy_modularity_communities(G, weight='weight'))
+    communities = sorted(communities, key=len, reverse=True)
+    cluster_lookup = {}
+    for cluster_id, community in enumerate(communities):
+        for node in community:
+            cluster_lookup[node] = cluster_id
+
+    palette = [
+        '#2F6F9F',
+        '#D66A4A',
+        '#3B9C8A',
+        '#C99A2E',
+        '#8B5A8C',
+        '#5A8F55',
+        '#7C6F64',
+        '#4B778D',
+    ]
+    node_colors = [palette[cluster_lookup.get(node, 0) % len(palette)] for node in G.nodes()]
+    node_counts = np.array([G.nodes[node]['count'] for node in G.nodes()], dtype=float)
+    max_count = node_counts.max() if len(node_counts) else 1
+    node_sizes = 250 + 1850 * np.sqrt(node_counts / max_count)
+
+    max_edge_weight = max([data['weight'] for _, _, data in G.edges(data=True)] or [1])
+    edge_widths = [0.75 + 3.2 * data['weight'] / max_edge_weight for _, _, data in G.edges(data=True)]
+    edge_alpha = [0.18 + 0.42 * data['weight'] / max_edge_weight for _, _, data in G.edges(data=True)]
+
+    pos = nx.spring_layout(G, k=0.95, iterations=250, seed=24, weight='weight')
+
+    fig = plt.figure(figsize=(16, 10), dpi=260, facecolor='#FAF9F5')
+    ax = fig.add_axes([0.035, 0.08, 0.68, 0.78])
+    side = fig.add_axes([0.74, 0.10, 0.23, 0.76])
+    ax.set_facecolor('#FAF9F5')
+    side.set_facecolor('#FAF9F5')
+
+    fig.text(
+        0.04,
+        0.94,
+        'Reference Co-citation Network',
+        fontsize=24,
+        fontweight='bold',
+        color='#26323B',
+        ha='left',
+    )
+    fig.text(
+        0.04,
+        0.905,
+        'CiteSpace-style backbone built from shared cited references in the 522-record Lens.org corpus',
+        fontsize=12.5,
+        color='#667682',
+        ha='left',
+    )
+    fig.add_artist(plt.Line2D([0.04, 0.96], [0.885, 0.885], color='#DADDD6', linewidth=1.4))
+
+    for (u, v, data), width, alpha in zip(G.edges(data=True), edge_widths, edge_alpha):
+        nx.draw_networkx_edges(
+            G,
+            pos,
+            edgelist=[(u, v)],
+            width=width,
+            edge_color='#9CAAAE',
+            alpha=alpha,
+            ax=ax,
+        )
+
+    nx.draw_networkx_nodes(
+        G,
+        pos,
+        node_size=node_sizes * 1.55,
+        node_color=node_colors,
+        alpha=0.16,
+        linewidths=0,
+        ax=ax,
+    )
+    nx.draw_networkx_nodes(
+        G,
+        pos,
+        node_size=node_sizes,
+        node_color=node_colors,
+        alpha=0.88,
+        edgecolors='white',
+        linewidths=1.8,
+        ax=ax,
+    )
+
+    degree_weight = dict(G.degree(weight='weight'))
+    label_nodes = sorted(
+        G.nodes(),
+        key=lambda node: (G.nodes[node]['count'], degree_weight.get(node, 0)),
+        reverse=True,
+    )[:14]
+    for node in label_nodes:
+        x, y = pos[node]
+        title = shorten_title(G.nodes[node]['title'], 48)
+        label = "\n".join(textwrap.wrap(title, width=23)[:2])
+        ax.annotate(
+            label,
+            (x, y),
+            xytext=(7, 7),
+            textcoords='offset points',
+            fontsize=6.8,
+            color='#26323B',
+            ha='left',
+            va='bottom',
+            bbox=dict(boxstyle='round,pad=0.25', facecolor='white', edgecolor='none', alpha=0.82),
+        )
+
+    ax.axis('off')
+
+    top_nodes = sorted(G.nodes(), key=lambda node: G.nodes[node]['count'], reverse=True)[:8]
+    side.axis('off')
+    side.text(0.0, 0.97, 'Top co-cited anchors', fontsize=13, fontweight='bold', color='#26323B')
+    side.text(0.0, 0.925, 'Count = times cited by papers in this corpus', fontsize=8.6, color='#667682')
+    y = 0.865
+    for rank, node in enumerate(top_nodes, 1):
+        color = palette[cluster_lookup.get(node, 0) % len(palette)]
+        count = G.nodes[node]['count']
+        year = G.nodes[node]['year'] or 'n/a'
+        title = shorten_title(G.nodes[node]['title'], 55)
+        side.scatter([0.015], [y + 0.009], s=70, color=color, edgecolors='white', linewidths=0.8)
+        side.text(0.045, y + 0.018, f'#{rank}  n={count}  year={year}', fontsize=8.8, color=color, fontweight='bold')
+        wrapped = textwrap.wrap(title, width=34)[:2]
+        side.text(0.045, y - 0.006, "\n".join(wrapped), fontsize=8.2, color='#26323B', va='top')
+        y -= 0.086
+
+    side.text(0.0, y - 0.02, 'Reading guide', fontsize=13, fontweight='bold', color='#26323B')
+    guide_items = [
+        ('Node size', 'citation frequency within the corpus'),
+        ('Edge width', 'co-citation strength'),
+        ('Color', 'network community detected from weighted links'),
+        ('Scope', 'only cited references also present in the corpus are labeled'),
+    ]
+    y -= 0.065
+    for head, body in guide_items:
+        side.text(0.0, y, head, fontsize=9, color='#26323B', fontweight='bold')
+        side.text(0.18, y, body, fontsize=8.5, color='#667682')
+        y -= 0.052
+
+    side.text(0.0, 0.035, f'Network: {G.number_of_nodes()} nodes / {G.number_of_edges()} edges', fontsize=8.8, color='#667682')
+    side.text(0.0, 0.005, 'Data source: cleaned Lens.org records, 2020-2026', fontsize=8.8, color='#667682')
+
+    output_file = os.path.join(output_dir, 'reference_cocitation_network.png')
+    plt.savefig(output_file, bbox_inches='tight', facecolor=fig.get_facecolor())
+    plt.close(fig)
+    print(f"Reference co-citation network saved to: {output_file}")
+
+    return G
+
+
 def build_reference_citation_network():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_path = os.path.join(base_path, 'data', 'processed', 'cleaned_data.csv')
@@ -292,4 +542,5 @@ def build_reference_citation_network():
 if __name__ == "__main__":
     build_author_network()
     build_institution_network()
+    build_reference_cocitation_network()
     build_reference_citation_network()

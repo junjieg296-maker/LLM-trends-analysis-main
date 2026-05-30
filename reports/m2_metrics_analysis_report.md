@@ -201,6 +201,10 @@
 
 ![Citation Network](../outputs/figures/citation_network.png)
 
+![Reference Co-citation Network](../outputs/figures/reference_cocitation_network.png)
+
+**图 6 文献共被引网络。** 该图在原始引文网络基础上进一步聚焦“共同被引”关系：节点表示在语料中被共同引用的代表性文献，节点越大说明被引频次越高，连线越粗说明共被引强度越强，颜色用于区分主题聚类。与原先的引用网络相比，它更接近 CiteSpace 语境下的知识基础图谱，能够更清晰地展示机器人任务规划、科学发现、临床智能体与人机协作等核心方向之间的知识关联。
+
 **引用网络特征**：
 * 网络规模受参考文献字段完整度影响（81.99%覆盖率）
 * 呈现典型的"星型-辐射"结构，少数高被引文献成为知识传播枢纽

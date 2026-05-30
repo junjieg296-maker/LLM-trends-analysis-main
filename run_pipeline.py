@@ -7,6 +7,7 @@ from src.keyword_cooccurrence import build_keyword_cooccurrence
 from src.network_analysis import (
     build_author_network,
     build_institution_network,
+    build_reference_cocitation_network,
     build_reference_citation_network,
 )
 from src.sensitivity_analysis import run_sensitivity_analysis
@@ -26,6 +27,7 @@ def main():
         ("M2 keyword co-occurrence network", build_keyword_cooccurrence),
         ("M2 author collaboration network", build_author_network),
         ("M2 institution/country distribution", build_institution_network),
+        ("M2 reference co-citation network", build_reference_cocitation_network),
         ("M2 citation reference network", build_reference_citation_network),
         ("M2 parameter sensitivity analysis", run_sensitivity_analysis),
     ]
