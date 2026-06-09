@@ -1,0 +1,4 @@
+stage,operation,count,reason,output
+Identification,Lens.org initial export,542,"Retrieved using Object AND Method query with 2020-2026 English article/review/conference constraints",data/raw/lens-llm-agents-raw.csv
+Deduplication,Remove duplicate records by DOI and Title,-20,"Duplicate scholarly work records identified through DOI and title checks",src/data_quality.py
+Included,Final records included for bibliometric analysis,522,"Records retained after cleaning and deduplication",data/processed/cleaned_data.csv
