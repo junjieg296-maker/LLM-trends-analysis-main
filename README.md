@@ -52,7 +52,7 @@ Lens.org 检索
 
 | 成员 | 项目角色 | 主要负责内容 | 对应交付物 |
 |---|---|---|---|
-| 高俊杰 | 组长 / 工程架构与代码统筹 | 负责项目整体结构设计、代码组织、自动化运行入口、README 与最终归档；统筹 M1-M3 成果整合，保证项目能够以 GitHub 形式提交和复现。 | `run_pipeline.py`、`requirements.txt`、`README.md`、`RELEASE_NOTES.md`、项目目录整理 |
+| 高俊杰 | 组长 / 项目统筹 / 工程整合 / 最终提交负责人 | 负责确定项目主题和研究范围，梳理课程要求并拆分为 M1、M2、M3 任务；设计 GitHub 仓库目录结构，整理 `config/`、`data/`、`src/`、`outputs/`、`reports/`、`paper/`、`presentation/` 和 `reflection/`；维护 `run_pipeline.py` 一键复现入口和 `requirements.txt` 依赖说明；检查并整合数据清洗、指标计算、关键词共现、合作网络、引用网络和共被引网络等分析脚本；多次重写 README，补充数据来源、筛选流程、字段说明、RQ、3 图 1 表、高被引文献表、图表解释、复现命令和课程交付物；整理 M1-M3 阶段报告，修订 M2 图表说明和 paper 图文逻辑；补齐 `docs/ai_usage.md`、`params.md`、`data/field_dictionary.md`、`data/screening_records.csv`、`outputs/tables/`、`reflection/` 和答辩 PPT 归档；负责最终提交前的仓库巡检和材料完整性检查。 | `README.md`、`run_pipeline.py`、`requirements.txt`、`params.md`、`docs/ai_usage.md`、`data/field_dictionary.md`、`data/screening_records.csv`、`outputs/tables/`、`reports/`、`paper/`、`presentation/`、`reflection/` |
 | 赵世铎 | 数据获取与检索策略规划 | 负责 Lens.org 检索策略设计，围绕 `(Object) AND (Method)` 逻辑确定关键词组合、时间范围、文献类型和语言限制；记录检索口径与策略变化。 | `config/query.yaml`、`data/raw/lens-llm-agents-raw.csv`、`reports/query_changelog.md`、`CHANGELOG.md` |
 | 解明昊 | 数据清洗与质量控制 | 负责原始数据去重、字段标准化、缺失值检查和质量评估；基于 DOI 与 Title 双重去重，将 542 条原始记录清洗为 522 篇有效文献。 | `data/processed/cleaned_data.csv`、`src/data_quality.py`、`reports/m1_data_quality_report.md` |
 | 杨广宸 | 计量分析与知识图谱构建 | 负责年度趋势、关键词共现、作者合作、机构/国家分布、引用网络、共被引网络和参数敏感性分析；输出 M2 阶段核心图表和指标结果。 | `src/metrics_analysis.py`、`src/keyword_cooccurrence.py`、`src/network_analysis.py`、`src/sensitivity_analysis.py`、`outputs/figures/`、`outputs/sensitivity_analysis_report.txt` |
@@ -62,9 +62,9 @@ Lens.org 检索
 
 | 阶段 | 小组协作重点 | 主要负责人 |
 |---|---|---|
-| M1 数据与检索方案 | 检索式设计、原始数据导出、去重清洗、字段质量评估 | 赵世铎、解明昊、高俊杰 |
-| M2 计量分析与图谱 | 指标计算、关键词共现、作者合作、机构分布、引用与共被引网络、敏感性分析 | 杨广宸、高俊杰 |
-| M3 综述与项目归档 | milestone 论文识别、mini review 写作、图文解释、release 报告、答辩 PPT | 罗博伟、高俊杰、全组协作 |
+| M1 数据与检索方案 | 检索式设计、原始数据导出、去重清洗、字段质量评估 | 高俊杰统筹，赵世铎、解明昊辅助 |
+| M2 计量分析与图谱 | 指标计算、关键词共现、作者合作、机构分布、引用与共被引网络、敏感性分析 | 高俊杰统筹，杨广宸辅助 |
+| M3 综述与项目归档 | milestone 论文识别、mini review 写作、图文解释、release 报告、答辩 PPT | 高俊杰统筹，罗博伟和全组辅助 |
 
 完整小组分工见：`reflection/team_division/team_division.md`。各成员第一人称个人收获与反思见：`reflection/gao_junjie/reflection.md`、`reflection/zhao_shiduo/reflection.md`、`reflection/xie_minghao/reflection.md`、`reflection/yang_guangchen/reflection.md`、`reflection/luo_bowei/reflection.md`。
 
