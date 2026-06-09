@@ -88,6 +88,23 @@
 
 文献计量综述的关键不只是展示图表，而是将图谱结果转化为可解释的技术叙事。根据关键词结构和 Top 10 高被引 milestone 候选论文，本文将 LLM 多智能体协作研究归纳为四条主要技术主线：科学发现与自驱动实验室、机器人与任务规划、人机协作、临床与医疗智能体。
 
+**表 1 Top 10 高被引 milestone 候选论文。** 数据来源为 Lens.org Scholarly Works，时间范围为 2020-2026 年；分析单位为清洗后 522 篇文献中的单篇论文；排序指标为 Lens.org 的 Citing Works Count；筛选阈值为 Top 10。该表用于回答 RQ4，即识别哪些高影响论文构成 LLM 多智能体协作研究的知识基础。
+
+| 排名 | 年份 | 被引次数 | 论文标题 | 来源 | DOI |
+|---:|---:|---:|---|---|---|
+| 1 | 2024 | 352 | Self-Driving Laboratories for Chemistry and Materials Science. | Chemical reviews | 10.1021/acs.chemrev.4c00055 |
+| 2 | 2023 | 259 | A Comprehensive Review of Recent Research Trends on Unmanned Aerial Vehicles (UAVs) | Systems | 10.3390/systems11080400 |
+| 3 | 2023 | 173 | Co-Writing Screenplays and Theatre Scripts with Language Models: Evaluation by Industry Professionals | Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems | 10.1145/3544548.3581225 |
+| 4 | 2025 | 136 | A review of large language models and autonomous agents in chemistry. | Chemical science | 10.1039/d4sc03921a |
+| 5 | 2024 | 109 | SMART-LLM: Smart Multi-Agent Robot Task Planning using Large Language Models | 2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) | 10.1109/iros58592.2024.10802322 |
+| 6 | 2024 | 108 | Evaluating large language models as agents in the clinic. | NPJ digital medicine | 10.1038/s41746-024-01083-y |
+| 7 | 2023 | 104 | Defining human-AI teaming the human-centered way: a scoping review and network analysis. | Frontiers in artificial intelligence | 10.3389/frai.2023.1250725 |
+| 8 | 2024 | 101 | RoCo: Dialectic Multi-Robot Collaboration with Large Language Models | 2024 IEEE International Conference on Robotics and Automation (ICRA) | 10.1109/icra57147.2024.10610855 |
+| 9 | 2024 | 100 | Understanding Large-Language Model (LLM)-powered Human-Robot Interaction | Proceedings of the 2024 ACM/IEEE International Conference on Human-Robot Interaction | 10.1145/3610977.3634966 |
+| 10 | 2024 | 90 | The impact of large language models on radiology: a guide for radiologists on the latest innovations in AI. | Japanese journal of radiology | 10.1007/s11604-024-01552-0 |
+
+表 1 的作用不是把高被引论文简单罗列出来，而是为后续技术叙事提供“锚点”。例如，化学与材料自驱动实验室相关论文对应科学发现主线，SMART-LLM 和 RoCo 对应机器人任务规划主线，human-AI teaming 与 human-robot interaction 论文对应人机协作主线，临床和影像医学相关论文则对应医疗智能体应用主线。因此，表 1 与图 4 共同支撑本文从代表文献到综述框架的过渡。
+
 ![Fig. 4 Milestone candidate matrix](../outputs/review_figures/fig4_milestone_roadmap.png)
 
 **图 4 里程碑候选矩阵。** 气泡大小表示 Lens.org 被引次数。高被引候选论文被归入四类技术叙事线，用于支撑后续综述章节组织。

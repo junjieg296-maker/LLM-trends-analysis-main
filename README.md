@@ -39,9 +39,9 @@ Lens.org 检索
 | 检索式 | `config/query.yaml` | Query as Code |
 | 参数说明 | `params.md` | 时间窗、阈值、Top N、共现阈值等参数选择理由 |
 | 代码复现 | `run_pipeline.py`, `requirements.txt` | 一键运行核心分析流程 |
-| 3 图 1 表 | README 中“课程要求版：3 图 1 表对应关系” | Fig.1/Fig.2/Fig.3/Table 1 与 RQ 绑定 |
+| 3 图 1 表 | README 中“课程要求版：3 图 1 表对应关系”；`outputs/tables/top_cited_papers.md` | Fig.1/Fig.2/Fig.3/Table 1 与 RQ 绑定 |
 | AI 使用说明 | `docs/ai_usage.md` | 工具用途、人工核验方式与使用边界 |
-| 答辩材料 | `presentation/LLM_multi_agent_week13_defense_expanded.pptx` | 扩展版答辩 PPT |
+| 答辩材料 | `presentation/LLM_multi_agentpptx.pptx` | 最新版答辩 PPT |
 | 小组分工与个人反思 | `reflection/team_division/team_division.md`, `reflection/*/reflection.md` | 小组分工说明、各成员第一人称收获与反思；高俊杰为主要统筹与最终整合贡献者 |
 
 ---
@@ -102,7 +102,7 @@ Lens.org 检索
 | 图 | Fig. 3 | 关键词共现与主题结构图 | RQ3：研究热点集中在哪些主题？ | 高频关键词、共现关系、主题层次 | Results 3.3 |
 | 表 | Table 1 | Top 10 高被引文献表 | RQ4：知识基础是什么？ | 被引次数、年份、来源、主题归属 | Results 3.4 |
 
-其中 **Table 1 Top 10 高被引文献表** 是本项目回答 RQ4 的核心表格。它不是简单列论文，而是用于识别该领域的 milestone 候选文献，并进一步支撑综述中的四条技术叙事线。
+其中 **Table 1 Top 10 高被引文献表** 是本项目回答 RQ4 的核心表格。它不是简单列论文，而是用于识别该领域的 milestone 候选文献，并进一步支撑综述中的四条技术叙事线。表格文件同时保存在 `outputs/tables/top_cited_papers.md` 和 `outputs/tables/top_cited_papers.csv`，便于 GitHub 巡检和后续复现。
 
 ---
 
@@ -527,6 +527,12 @@ M3 阶段将 M1-M2 的计量证据转化为可提交的综述文章和 GitHub re
 | 挑战与未来议程 | `outputs/review_figures/fig5_challenges_agenda.png` | 总结评价、解释性、场景验证和安全治理问题 |
 | 文献共被引网络 | `outputs/review_figures/fig6_reference_cocitation_network.png` | 补充 milestone 背后的知识基础 |
 
+### 核心表格
+
+| 表格 | 文件路径 | 用途 |
+|---|---|---|
+| Table 1 Top 10 高被引文献表 | `outputs/tables/top_cited_papers.md`, `outputs/tables/top_cited_papers.csv` | 回答 RQ4，识别知识基础与 milestone 候选论文 |
+
 ---
 
 ## 快速复现
@@ -595,6 +601,7 @@ LLM-trends-analysis-main/
 ├── outputs/
 │   ├── figures/                            # M2 计量分析图表
 │   ├── review_figures/                     # 综述和答辩图表
+│   ├── tables/                             # 课程要求中的核心表格
 │   ├── metrics_summary.txt                 # 指标汇总
 │   ├── keyword_statistics.txt              # 关键词统计
 │   ├── milestone_paper_candidates.md       # Top 10 milestone 候选论文
@@ -603,7 +610,7 @@ LLM-trends-analysis-main/
 │   └── mini_review_final.md                # 综述终稿
 ├── presentation/
 │   ├── README.md
-│   └── LLM_multi_agent_week13_defense_expanded.pptx
+│   └── LLM_multi_agentpptx.pptx
 ├── reflection/
 │   ├── README.md
 │   ├── team_division/
@@ -678,12 +685,12 @@ LLM-trends-analysis-main/
 | M3 release 报告 | `reports/m3_final_report.md` |
 | Mini review 终稿 | `paper/mini_review_final.md` |
 | 指标规范 | `reports/metrics_specification.md` |
-| 关键图表 | `outputs/figures/`, `outputs/review_figures/` |
+| 关键图表与表格 | `outputs/figures/`, `outputs/review_figures/`, `outputs/tables/` |
 | 一键复现入口 | `run_pipeline.py` |
 | 参数说明 | `params.md` |
 | AI 使用说明 | `docs/ai_usage.md` |
 | 小组分工与个人反思 | `reflection/team_division/team_division.md`, `reflection/*/reflection.md` |
-| 答辩 PPT | `presentation/LLM_multi_agent_week13_defense_expanded.pptx` |
+| 答辩 PPT | `presentation/LLM_multi_agentpptx.pptx` |
 
 ---
 

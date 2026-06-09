@@ -10,7 +10,7 @@
 
 | 路径 | 内容 |
 |---|---|
-| `team_division/team_division.md` | 小组分工与贡献说明，重点说明高俊杰承担的主要统筹、工程化、文档整合和最终提交工作 |
+| `team_division/team_division.md` | 小组分工与贡献说明，按项目流程列出各成员参与模块和对应成果 |
 | `gao_junjie/reflection.md` | 高俊杰个人收获、反思与后续学习计划 |
 | `zhao_shiduo/reflection.md` | 赵世铎个人收获、反思与后续学习计划 |
 | `xie_minghao/reflection.md` | 解明昊个人收获、反思与后续学习计划 |

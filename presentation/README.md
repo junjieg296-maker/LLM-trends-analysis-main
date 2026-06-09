@@ -6,7 +6,7 @@
 
 | 文件 | 说明 |
 |---|---|
-| `LLM_multi_agent_week13_defense_expanded.pptx` | 13 页扩展版答辩 PPT，覆盖 RQ、数据口径、3 图 1 表、核心发现、局限、GitHub 路径和分工 |
+| `LLM_multi_agentpptx.pptx` | 13 页最新版答辩 PPT，覆盖 RQ、数据口径、3 图 1 表、核心发现、局限、GitHub 路径和分工 |
 
 ## 讲述重点
 
