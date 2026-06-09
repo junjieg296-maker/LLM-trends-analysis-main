@@ -42,7 +42,7 @@ Lens.org 检索
 | 3 图 1 表 | README 中“课程要求版：3 图 1 表对应关系” | Fig.1/Fig.2/Fig.3/Table 1 与 RQ 绑定 |
 | AI 使用说明 | `docs/ai_usage.md` | 工具用途、人工核验方式与使用边界 |
 | 答辩材料 | `presentation/LLM_multi_agent_week13_defense_expanded.pptx` | 扩展版答辩 PPT |
-| 个人反思 | `reflection/gao_junjie_reflection.md` | 高俊杰贡献记录与个人反思 |
+| 小组分工与个人反思 | `reflection/team_division/team_division.md`, `reflection/*/reflection.md` | 小组分工说明、各成员第一人称收获与反思；高俊杰为主要统筹与最终整合贡献者 |
 
 ---
 
@@ -66,7 +66,7 @@ Lens.org 检索
 | M2 计量分析与图谱 | 指标计算、关键词共现、作者合作、机构分布、引用与共被引网络、敏感性分析 | 杨广宸、高俊杰 |
 | M3 综述与项目归档 | milestone 论文识别、mini review 写作、图文解释、release 报告、答辩 PPT | 罗博伟、高俊杰、全组协作 |
 
-个人贡献与反思记录见：`reflection/gao_junjie_reflection.md`。
+完整小组分工见：`reflection/team_division/team_division.md`。各成员第一人称个人收获与反思见：`reflection/gao_junjie/reflection.md`、`reflection/zhao_shiduo/reflection.md`、`reflection/xie_minghao/reflection.md`、`reflection/yang_guangchen/reflection.md`、`reflection/luo_bowei/reflection.md`。
 
 ---
 
@@ -606,7 +606,18 @@ LLM-trends-analysis-main/
 │   └── LLM_multi_agent_week13_defense_expanded.pptx
 ├── reflection/
 │   ├── README.md
-│   └── gao_junjie_reflection.md            # 高俊杰个人贡献与反思
+│   ├── team_division/
+│   │   └── team_division.md                # 小组分工与贡献说明
+│   ├── gao_junjie/
+│   │   └── reflection.md                   # 高俊杰第一人称个人收获与反思
+│   ├── zhao_shiduo/
+│   │   └── reflection.md                   # 赵世铎第一人称个人收获与反思
+│   ├── xie_minghao/
+│   │   └── reflection.md                   # 解明昊第一人称个人收获与反思
+│   ├── yang_guangchen/
+│   │   └── reflection.md                   # 杨广宸第一人称个人收获与反思
+│   └── luo_bowei/
+│       └── reflection.md                   # 罗博伟第一人称个人收获与反思
 ├── reports/
 │   ├── m1_data_quality_report.md           # M1 数据质量报告
 │   ├── m2_metrics_analysis_report.md       # M2 计量分析报告
@@ -671,7 +682,7 @@ LLM-trends-analysis-main/
 | 一键复现入口 | `run_pipeline.py` |
 | 参数说明 | `params.md` |
 | AI 使用说明 | `docs/ai_usage.md` |
-| 个人反思 | `reflection/gao_junjie_reflection.md` |
+| 小组分工与个人反思 | `reflection/team_division/team_division.md`, `reflection/*/reflection.md` |
 | 答辩 PPT | `presentation/LLM_multi_agent_week13_defense_expanded.pptx` |
 
 ---
