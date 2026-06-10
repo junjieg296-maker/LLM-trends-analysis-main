@@ -33,7 +33,7 @@ Lens.org 检索
 
 | 课程检查项 | 本项目路径 | 说明 |
 |---|---|---|
-| 课程论文 | `paper/mini_review_final.md` | mini review 终稿 |
+| 课程论文 | `paper/course_paper_cn.pdf`, `paper/course_paper_en.pdf`, `paper/mini_review_final.md` | 中文版课程论文、英文版课程论文和 mini review 终稿 |
 | GitHub 仓库说明 | `README.md` | 研究主题、成员分工、数据来源、运行命令、输出目录 |
 | 数据与筛选记录 | `data/README.md`, `data/field_dictionary.md`, `data/screening_records.csv` | 数据来源、字段字典、542 -> 522 筛选流程 |
 | 检索式 | `config/query.yaml` | Query as Code |
@@ -607,7 +607,10 @@ LLM-trends-analysis-main/
 │   ├── milestone_paper_candidates.md       # Top 10 milestone 候选论文
 │   └── sensitivity_analysis_report.txt     # 参数敏感性分析
 ├── paper/
-│   └── mini_review_final.md                # 综述终稿
+│   ├── course_paper_cn.pdf                 # 中文版课程论文
+│   ├── course_paper_en.pdf                 # 英文版课程论文
+│   ├── generate_course_papers.py           # 课程论文 PDF 生成脚本
+│   └── mini_review_final.md                # 综述终稿 Markdown
 ├── presentation/
 │   ├── README.md
 │   └── LLM_multi_agentpptx.pptx
@@ -683,6 +686,8 @@ LLM-trends-analysis-main/
 | M1 数据质量报告 | `reports/m1_data_quality_report.md` |
 | M2 计量分析报告 | `reports/m2_metrics_analysis_report.md` |
 | M3 release 报告 | `reports/m3_final_report.md` |
+| 中文版课程论文 | `paper/course_paper_cn.pdf` |
+| 英文版课程论文 | `paper/course_paper_en.pdf` |
 | Mini review 终稿 | `paper/mini_review_final.md` |
 | 指标规范 | `reports/metrics_specification.md` |
 | 关键图表与表格 | `outputs/figures/`, `outputs/review_figures/`, `outputs/tables/` |
